@@ -1,0 +1,50 @@
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+name: release-please & update-citation
+
+jobs:
+  release_please:
+    runs-on: ubuntu-latest
+    outputs:
+      prs_created: ${{ steps.release.outputs.prs_created }}
+    steps:
+      - uses: googleapis/release-please-action@v5
+        id: release
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  create_citation:
+    runs-on: ubuntu-latest
+    needs: release_please
+    if: ${{ needs.release_please.outputs.prs_created == 'true' }}
+    steps:
+      - name: Checkout repository
+
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          ref: release-please--branches--${{ github.ref_name }}
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v8.2.0
+        with:
+          version: latest
+
+      - name: Update the CITATION.cff file from the pyproject.toml file using cff-from-621
+        run: uvx cff-from-621
+
+      - name: Commit and push the updated CITATION.cff file
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          branch: release-please--branches--${{ github.ref_name }}
+          commit_message: "chore: Update CITATION.cff from pyproject.toml"
+          file_pattern: "CITATION.cff"
