@@ -34,9 +34,10 @@ pip install dv_schema_models
 ### 1. Load and query the schema
 
 ```python
+import json
 from dv_schema_models.dataverse_schema import load_schema
 
-schema = load_schema("dv_schema.json")
+schema = load_schema(json.load(open("dv_schema.json")))
 
 schema.block_names()                        # ['citation', 'geospatial', ...]
 block = schema.get_block("citation")
@@ -52,9 +53,10 @@ field.iter_leaf_fields()                    # [keywordValue, keywordVocabulary, 
 ### 2. Load a dataset and read values
 
 ```python
+import json
 from dv_schema_models.dataset_instance import load_dataset
 
-dataset = load_dataset("ds_metadata.json")
+dataset = load_dataset(json.load(open("ds_metadata.json")))
 
 # Shortcut from the top level
 dataset.get_value("citation", "title")      # plain string
@@ -68,12 +70,14 @@ block.get_field("author").simple_value()    # same, from the DatasetFieldValue d
 ### 3. Validate instance values against the schema
 
 ```python
+import json
 from dv_schema_models.dataverse_schema import load_schema
 from dv_schema_models.dataset_instance import load_dataset
 from dv_schema_models.schema_driven_records import build_record_model, flatten_instance
 
-schema = load_schema("dv_schema.json")
-dataset = load_dataset("ds_metadata.json")
+
+schema = load_schema(json.load(open("dv_schema.json")))
+dataset = load_dataset(json.load(open("ds_metadata.json")))
 
 citation_schema = schema.get_block("citation")
 CitationRecord = build_record_model(citation_schema)   # dynamic Pydantic model
