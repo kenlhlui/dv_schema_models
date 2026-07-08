@@ -85,7 +85,7 @@ class MetadataBlockInstance(BaseModel):
 class DatasetVersion(BaseModel):
     """One version of a dataset, holding the actual metadata block values and files."""
 
-    model_config = ConfigDict(extra="ignore")
+    model_config = ConfigDict(extra="allow")
 
     id: int
     datasetId: int
@@ -96,15 +96,14 @@ class DatasetVersion(BaseModel):
     )  # backward compatibility: some datasets /older Dataverse versions don't have this field
     storageIdentifier: str
     internalVersionNumber: int
-    versionState: str
     latestVersionPublishingState: str
     deaccessionLink: str | None
-    UNF: str | None
+    UNF: str | None = Field(None)
     lastUpdateTime: str
     createTime: str
     termsOfUse: str | None
     termsOfAccess: str | None
-    dataAccessPlace: str | None
+    dataAccessPlace: str | None = Field(None)
     fileAccessRequest: bool
 
     metadataBlocks: dict[str, MetadataBlockInstance]
@@ -133,12 +132,16 @@ class DatasetData(BaseModel):
     )  # backward compatibility: some datasets /older Dataverse versions don't have this field
 
     latestVersion: DatasetVersion = Field(
-        alias="latestVersion",
         validation_alias=AliasChoices(
             "datasetVersion",
             "latestVersion",
         ),
     )
+
+    @property
+    def datasetVersion(self) -> DatasetVersion:
+        """Supports both export and Native JSON endpoints."""
+        return self.latestVersion
 
 
 class DatasetExport(BaseModel):

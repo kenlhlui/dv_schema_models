@@ -25,5 +25,6 @@ message = "If you use this software, please cite it."
 
 [dependency-groups]
 dev = [
+    "httpx2>=2.5.0",
     "pytest>=9.1.1",
 ]
