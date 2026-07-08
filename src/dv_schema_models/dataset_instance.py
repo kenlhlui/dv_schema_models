@@ -132,12 +132,16 @@ class DatasetData(BaseModel):
     )  # backward compatibility: some datasets /older Dataverse versions don't have this field
 
     latestVersion: DatasetVersion = Field(
-        alias="latestVersion",
         validation_alias=AliasChoices(
             "datasetVersion",
             "latestVersion",
         ),
     )
+
+    @property
+    def datasetVersion(self) -> DatasetVersion:
+        """Supports both export and Native JSON endpoints."""
+        return self.latestVersion
 
 
 class DatasetExport(BaseModel):
