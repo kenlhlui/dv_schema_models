@@ -19,7 +19,7 @@ import json
 import pathlib
 from typing import Any
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field
 
 
 class DatasetFieldValue(BaseModel):
@@ -134,7 +134,13 @@ class DatasetData(BaseModel):
         str | None
     )  # backward compatibility: some datasets /older Dataverse versions don't have this field
 
-    latestVersion: DatasetVersion
+    latestVersion: DatasetVersion = Field(
+        alias="latestVersion",
+        validation_alias=AliasChoices(
+            "datasetVersion",
+            "latestVersion",
+        ),
+    )
 
 
 class DatasetExport(BaseModel):
@@ -151,8 +157,14 @@ class DatasetExport(BaseModel):
 
 
 def load_dataset(path: str) -> DatasetExport:
-    """Read a dataset export JSON file from disk and parse it into a DatasetExport."""
+    """Read a dataset export JSON file from disk and parse it into a DatasetExport.
+
+    Accepts either the full `{status, data: {...}}` export envelope, or a bare
+    `data`-shaped payload (no envelope), by trying each model in turn.
+    """
     with pathlib.Path(path).open("r", encoding="utf-8") as f:
         raw = json.load(f)
 
-    return DatasetExport.model_validate(raw)
+    if "data" in raw:
+        return DatasetExport.model_validate(raw)
+    return DatasetExport(status="OK", data=DatasetData.model_validate(raw))
