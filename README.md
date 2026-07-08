@@ -30,7 +30,7 @@ pip install dv_schema_models
 ### 1. Load and query the schema
 
 ```python
-from src.dv_schema_models.dataverse_schema import load_schema
+from dv_schema_models.dataverse_schema import load_schema
 
 schema = load_schema("dv_schema.json")
 
@@ -48,7 +48,7 @@ field.iter_leaf_fields()                    # [keywordValue, keywordVocabulary, 
 ### 2. Load a dataset and read values
 
 ```python
-from src.dv_schema_models.dataset_instance import load_dataset
+from dv_schema_models.dataset_instance import load_dataset
 
 dataset = load_dataset("ds_metadata.json")
 
@@ -64,9 +64,9 @@ block.get_field("author").simple_value()    # same, from the DatasetFieldValue d
 ### 3. Validate instance values against the schema
 
 ```python
-from src.dv_schema_models.dataverse_schema import load_schema
-from src.dv_schema_models.dataset_instance import load_dataset
-from src.dv_schema_models.schema_driven_records import build_record_model, flatten_instance
+from dv_schema_models.dataverse_schema import load_schema
+from dv_schema_models.dataset_instance import load_dataset
+from dv_schema_models.schema_driven_records import build_record_model, flatten_instance
 
 schema = load_schema("dv_schema.json")
 dataset = load_dataset("ds_metadata.json")
