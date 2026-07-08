@@ -111,8 +111,6 @@ class DataverseSchemaResponse(BaseModel):
         return [b.name for b in self.data]
 
 
-def load_schema(path: str) -> DataverseSchemaResponse:
-    """Read a metadatablocks JSON file from disk and parse it into a DataverseSchemaResponse."""
-    with pathlib.Path(path).open("r", encoding="utf-8") as f:
-        raw = json.load(f)
-    return DataverseSchemaResponse.model_validate(raw)
+def load_schema(metadata: dict) -> DataverseSchemaResponse:
+    """Parse a metadatablocks JSON payload (already loaded as a dict) into a DataverseSchemaResponse."""
+    return DataverseSchemaResponse.model_validate(metadata)
