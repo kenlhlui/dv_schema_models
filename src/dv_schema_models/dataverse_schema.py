@@ -7,6 +7,8 @@ block?", "is authorAffiliation required?", "what controlled vocab values does
 subject accept?").
 """
 
+# ruff: noqa: N815
+
 from __future__ import annotations
 
 import json
