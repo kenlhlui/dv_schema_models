@@ -113,6 +113,11 @@ class DatasetVersion(BaseModel):
         block = self.metadataBlocks.get(block_name)
         return block.get_value(type_name) if block else None
 
+    def field_names(self, block_name: str) -> list[str]:
+        """Get the typeNames of every field present in the given block (e.g. 'citation')."""
+        block = self.metadataBlocks.get(block_name)
+        return block.field_names() if block else []
+
 
 class DatasetData(BaseModel):
     """The 'data' payload of a dataset export response."""
@@ -152,9 +157,32 @@ class DatasetExport(BaseModel):
     status: str
     data: DatasetData
 
-    def get_value(self, block_name: str, type_name: str) -> Any:
-        """Convenience shortcut: dataset.get_value('citation', 'title') straight from the top level."""
+    def get_value(
+        self, block_name: str, type_name: str
+    ) -> str | list[str] | dict[str, Any] | list[dict[str, Any]] | None:
+        """Get the value of a field by its block and type names.
+
+        Args:
+            block_name: The name of the metadata block (e.g. 'citation', 'geospatial').
+            type_name: The typeName of the field within that block (e.g. 'title', 'author').
+
+        Returns:
+            str | list[str] | dict[str, Any] | list[dict[str, Any]] | None: The value of the specified field, or None if not found.
+
+        """
         return self.data.latestVersion.get_value(block_name, type_name)
+
+    def field_names(self, block_name: str) -> list[str]:
+        """Check what fields are present in a given block.
+
+        Args:
+            block_name: The name of the metadata block (e.g. 'citation', 'geospatial').
+
+        Returns:
+            list[str]: A list of typeNames for the fields present in the specified block.
+
+        """
+        return self.data.latestVersion.field_names(block_name)
 
 
 def load_dataset(metadata: dict) -> DatasetExport:
