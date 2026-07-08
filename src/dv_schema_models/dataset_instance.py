@@ -53,6 +53,9 @@ class DatasetFieldValue(BaseModel):
                 return {k: v.simple_value() for k, v in self.value.items()}
         return self.value
 
+    def get_fields(self) -> list[DatasetFieldValue]:
+        return [self.typeName for f in self.value]
+
 
 # Needed because DatasetFieldValue references itself by forward-reference string.
 DatasetFieldValue.model_rebuild()
@@ -66,6 +69,10 @@ class MetadataBlockInstance(BaseModel):
     displayName: str
     name: str
     fields: list[DatasetFieldValue]
+
+    def field_names(self) -> list[str]:
+        """Return the typeName of every field present in this block instance."""
+        return [f.typeName for f in self.fields]
 
     def get_field(self, type_name: str) -> DatasetFieldValue | None:
         """Find a field in this block by its typeName (e.g. 'title', 'author')."""
