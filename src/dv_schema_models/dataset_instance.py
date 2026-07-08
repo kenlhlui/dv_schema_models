@@ -11,7 +11,7 @@ depending on typeClass/multiple:
   - compound, multiple=False                          -> a dict of nested fields
   - compound, multiple=True                           -> a list of dicts of nested fields
 """
-# ruff: noqa: N815
+# ruff: noqa: N815, N802
 
 from __future__ import annotations
 
