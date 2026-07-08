@@ -1,6 +1,6 @@
 [project]
 name = "dv-schema-models"
-version = "0.2.0-a"
+version = "0.2.0-a.1"
 description = "Turns Harvard Dataverse Project metadatablocks schema and dataset JSON into Pydantic models."
 readme = "README.md"
 authors = [
