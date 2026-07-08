@@ -1,0 +1,16 @@
+---
+cff-version: 1.2.0
+type: software
+title: dv-schema-models
+version: 0.2.0-a
+date-released: '2026-07-08'
+authors:
+- name: Ken Lui
+  email: kenlh.lui@utoronto.ca
+license: MIT
+message: If you use this software, please cite it.
+abstract: Turns Harvard Dataverse Project metadatablocks schema and dataset JSON
+  into Pydantic models.
+url: https://github.com/kenlhlui/dv_schema_models/
+repository-code: https://github.com/kenlhlui/dv_schema_models.git
+...
