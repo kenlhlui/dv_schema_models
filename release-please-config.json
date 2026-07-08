@@ -5,7 +5,9 @@
       "release-type": "python",
       "draft": true,
       "force-tag-creation": true,
-      "always-update": false
+      "always-update": false,
+      "prerelease": true,
+      "prerelease-type": "a"
     }
   }
 }
