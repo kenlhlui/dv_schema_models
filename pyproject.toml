@@ -1,14 +1,29 @@
 [project]
 name = "dv-schema-models"
 version = "0.1.0"
-description = "Turns Harvard Dataverse Project metadatablocks schema into Pydantic models."
+description = "Turns Harvard Dataverse Project metadatablocks schema and dataset JSON into Pydantic models."
 readme = "README.md"
 authors = [
     { name = "Ken Lui", email = "kenlh.lui@utoronto.ca"}
 ]
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "pydantic>=2.13.4",
+]
 license = "MIT"
+
+[project.urls]
+Homepage = "https://github.com/kenlhlui/dv_schema_models/"
+Documentation = "https://github.com/kenlhlui/dv_schema_models/blob/main/README.md"
+Repository = "https://github.com/kenlhlui/dv_schema_models.git"
+Issues = "https://github.com/kenlhlui/dv_schema_models/issues"
+Changelog = "https://github.com/kenlhlui/dv_schema_models/blob/main/CHANGELOG.md"
+
 
 [tool.cff-from-621.static]
 message = "If you use this software, please cite it."
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]

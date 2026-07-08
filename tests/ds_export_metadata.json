@@ -1,0 +1,897 @@
+{
+  "id": 49504,
+  "identifier": "FS2/FSCZB5V",
+  "persistentUrl": "https://doi.org/10.80240/FS2/FSCZB5V",
+  "protocol": "doi",
+  "authority": "10.80240",
+  "separator": "/",
+  "publisher": "Borealis",
+  "storageIdentifier": "s3://10.80240/FS2/FSCZB5V",
+  "datasetType": "dataset",
+  "datasetVersion": {
+    "id": 8605,
+    "datasetId": 49504,
+    "datasetPersistentId": "doi:10.80240/FS2/FSCZB5V",
+    "datasetType": "dataset",
+    "storageIdentifier": "s3://10.80240/FS2/FSCZB5V",
+    "internalVersionNumber": 85,
+    "versionState": "DRAFT",
+    "latestVersionPublishingState": "DRAFT",
+    "deaccessionLink": "",
+    "UNF": "UNF:6:psLQjMqLPZMi4vymBsfUnA==",
+    "lastUpdateTime": "2026-04-30T14:56:16Z",
+    "createTime": "2024-10-29T20:33:10Z",
+    "termsOfUse": "New term of use ",
+    "termsOfAccess": "New Terms of access",
+    "dataAccessPlace": "New data access content",
+    "fileAccessRequest": true,
+    "metadataBlocks": {
+      "citation": {
+        "displayName": "Citation Metadata",
+        "name": "citation",
+        "fields": [
+          {
+            "typeName": "title",
+            "multiple": false,
+            "typeClass": "primitive",
+            "value": "Test dataset for data curation serivce"
+          },
+          {
+            "typeName": "subtitle",
+            "multiple": false,
+            "typeClass": "primitive",
+            "value": "Testing"
+          },
+          {
+            "typeName": "alternativeTitle",
+            "multiple": true,
+            "typeClass": "primitive",
+            "value": ["testing 1"]
+          },
+          {
+            "typeName": "author",
+            "multiple": true,
+            "typeClass": "compound",
+            "value": [
+              {
+                "authorName": {
+                  "typeName": "authorName",
+                  "multiple": false,
+                  "typeClass": "primitive",
+                  "value": "Lui, Ken"
+                },
+                "authorIdentifierScheme": {
+                  "typeName": "authorIdentifierScheme",
+                  "multiple": false,
+                  "typeClass": "controlledVocabulary",
+                  "value": "ORCID"
+                }
+              },
+              {
+                "authorName": {
+                  "typeName": "authorName",
+                  "multiple": false,
+                  "typeClass": "primitive",
+                  "value": "Another, Author"
+                },
+                "authorIdentifierScheme": {
+                  "typeName": "authorIdentifierScheme",
+                  "multiple": false,
+                  "typeClass": "controlledVocabulary",
+                  "value": "ORCID"
+                },
+                "authorIdentifier": {
+                  "typeName": "authorIdentifier",
+                  "multiple": false,
+                  "typeClass": "primitive",
+                  "value": "11212131123"
+                }
+              }
+            ]
+          },
+          {
+            "typeName": "datasetContact",
+            "multiple": true,
+            "typeClass": "compound",
+            "value": [
+              {
+                "datasetContactName": {
+                  "typeName": "datasetContactName",
+                  "multiple": false,
+                  "typeClass": "primitive",
+                  "value": "Lui, Ken"
+                },
+                "datasetContactAffiliation": {
+                  "typeName": "datasetContactAffiliation",
+                  "multiple": false,
+                  "typeClass": "primitive",
+                  "value": "University of Toronto"
+                }
+              }
+            ]
+          },
+          {
+            "typeName": "dsDescription",
+            "multiple": true,
+            "typeClass": "compound",
+            "value": [
+              {
+                "dsDescriptionValue": {
+                  "typeName": "dsDescriptionValue",
+                  "multiple": false,
+                  "typeClass": "primitive",
+                  "value": "This dataset contains files that are corrupted.\n\nHere is a obviouss spelling error\n\nbut Obviouss  capital letter is not checked."
+                }
+              },
+              {
+                "dsDescriptionValue": {
+                  "typeName": "dsDescriptionValue",
+                  "multiple": false,
+                  "typeClass": "primitive",
+                  "value": "This is an additional comment.\nAnotherrr typoo here"
+                }
+              },
+              {
+                "dsDescriptionValue": {
+                  "typeName": "dsDescriptionValue",
+                  "multiple": false,
+                  "typeClass": "primitive",
+                  "value": "\"Hoopee\" hope this typo is now shown, as un-expected"
+                }
+              }
+            ]
+          },
+          {
+            "typeName": "subject",
+            "multiple": true,
+            "typeClass": "controlledVocabulary",
+            "value": ["Agricultural Sciences"]
+          },
+          {
+            "typeName": "keyword",
+            "multiple": true,
+            "typeClass": "compound",
+            "value": [
+              {
+                "keywordValue": {
+                  "typeName": "keywordValue",
+                  "multiple": false,
+                  "typeClass": "primitive",
+                  "value": "Test"
+                }
+              },
+              {
+                "keywordValue": {
+                  "typeName": "keywordValue",
+                  "multiple": false,
+                  "typeClass": "primitive",
+                  "value": "test"
+                }
+              }
+            ]
+          },
+          {
+            "typeName": "publication",
+            "multiple": true,
+            "typeClass": "compound",
+            "value": [
+              {
+                "publicationRelationType": {
+                  "typeName": "publicationRelationType",
+                  "multiple": false,
+                  "typeClass": "controlledVocabulary",
+                  "value": "IsCitedBy"
+                },
+                "publicationCitation": {
+                  "typeName": "publicationCitation",
+                  "multiple": false,
+                  "typeClass": "primitive",
+                  "value": "test paper one"
+                },
+                "publicationIDType": {
+                  "typeName": "publicationIDType",
+                  "multiple": false,
+                  "typeClass": "controlledVocabulary",
+                  "value": "doi"
+                },
+                "publicationIDNumber": {
+                  "typeName": "publicationIDNumber",
+                  "multiple": false,
+                  "typeClass": "primitive",
+                  "value": "test1"
+                },
+                "publicationURL": {
+                  "typeName": "publicationURL",
+                  "multiple": false,
+                  "typeClass": "primitive",
+                  "value": "http://www.test1.org"
+                }
+              },
+              {
+                "publicationRelationType": {
+                  "typeName": "publicationRelationType",
+                  "multiple": false,
+                  "typeClass": "controlledVocabulary",
+                  "value": "IsCitedBy"
+                },
+                "publicationCitation": {
+                  "typeName": "publicationCitation",
+                  "multiple": false,
+                  "typeClass": "primitive",
+                  "value": "test paper two"
+                },
+                "publicationIDType": {
+                  "typeName": "publicationIDType",
+                  "multiple": false,
+                  "typeClass": "controlledVocabulary",
+                  "value": "doi"
+                },
+                "publicationIDNumber": {
+                  "typeName": "publicationIDNumber",
+                  "multiple": false,
+                  "typeClass": "primitive",
+                  "value": "test2"
+                },
+                "publicationURL": {
+                  "typeName": "publicationURL",
+                  "multiple": false,
+                  "typeClass": "primitive",
+                  "value": "http://www.test2.org"
+                }
+              }
+            ]
+          },
+          {
+            "typeName": "notesText",
+            "multiple": false,
+            "typeClass": "primitive",
+            "value": "This is a note.\n\nThis is a notee with 'notee' as a wrong word."
+          },
+          {
+            "typeName": "depositor",
+            "multiple": false,
+            "typeClass": "primitive",
+            "value": "Lui, Ken"
+          },
+          {
+            "typeName": "dateOfDeposit",
+            "multiple": false,
+            "typeClass": "primitive",
+            "value": "2024-10-29"
+          },
+          {
+            "typeName": "relatedDatasets",
+            "multiple": true,
+            "typeClass": "primitive",
+            "value": ["This is a related dataset citation"]
+          },
+          {
+            "typeName": "dataSources",
+            "multiple": true,
+            "typeClass": "primitive",
+            "value": ["First data source", "Another data source"]
+          }
+        ]
+      },
+      "geospatial": {
+        "displayName": "Geospatial Metadata",
+        "name": "geospatial",
+        "fields": []
+      },
+      "journal": {
+        "displayName": "Journal Metadata",
+        "name": "journal",
+        "fields": []
+      },
+      "3dobjects": {
+        "displayName": "3D Objects Metadata",
+        "name": "3dobjects",
+        "fields": []
+      }
+    },
+    "files": [
+      {
+        "label": "README",
+        "restricted": false,
+        "directoryLabel": "Chapeter 1",
+        "version": 3,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 49564,
+          "persistentId": "",
+          "filename": "README",
+          "contentType": "text/plain",
+          "friendlyType": "Plain Text",
+          "filesize": 0,
+          "storageIdentifier": "s3://dataverse:19303961259-fb5c7434120d",
+          "rootDataFileId": -1,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e",
+          "checksum": {
+            "type": "MD5",
+            "value": "d41d8cd98f00b204e9800998ecf8427e"
+          },
+          "tabularData": false,
+          "creationDate": "2024-11-06",
+          "directoryLabel": "Chapeter 1",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "label": "borken.RData",
+        "restricted": false,
+        "directoryLabel": "rdata",
+        "version": 1,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 49579,
+          "persistentId": "",
+          "filename": "borken.RData",
+          "contentType": "application/x-rlang-transport",
+          "friendlyType": "R Data",
+          "filesize": 8399,
+          "storageIdentifier": "s3://dataverse:1931d2621aa-e9b19d3a7890",
+          "rootDataFileId": -1,
+          "md5": "740d80b50986bcef2ecb648dc965d8e4",
+          "checksum": {
+            "type": "MD5",
+            "value": "740d80b50986bcef2ecb648dc965d8e4"
+          },
+          "tabularData": false,
+          "creationDate": "2024-11-11",
+          "directoryLabel": "rdata",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "label": "borken_pdf.pdf",
+        "restricted": false,
+        "directoryLabel": "pdf",
+        "version": 1,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 49715,
+          "persistentId": "",
+          "filename": "borken_pdf.pdf",
+          "contentType": "application/pdf",
+          "friendlyType": "Adobe PDF",
+          "filesize": 550527,
+          "storageIdentifier": "s3://dataverse:19398f6e9c9-b7e80d40c644",
+          "rootDataFileId": -1,
+          "md5": "de4a84a782d6b8b7a8b12e2e59dd9978",
+          "checksum": {
+            "type": "MD5",
+            "value": "de4a84a782d6b8b7a8b12e2e59dd9978"
+          },
+          "tabularData": false,
+          "creationDate": "2024-12-05",
+          "directoryLabel": "pdf",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "label": "broken.nc",
+        "restricted": false,
+        "directoryLabel": "nc",
+        "version": 2,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 49513,
+          "persistentId": "",
+          "filename": "broken.nc",
+          "contentType": "application/x-netcdf",
+          "friendlyType": "Network Common Data Form",
+          "filesize": 6968,
+          "storageIdentifier": "s3://dataverse:192e0357103-d48c0436fb5b",
+          "rootDataFileId": -1,
+          "md5": "8625153287503a856b0694bb76bde849",
+          "checksum": {
+            "type": "MD5",
+            "value": "8625153287503a856b0694bb76bde849"
+          },
+          "tabularData": false,
+          "creationDate": "2024-10-30",
+          "directoryLabel": "nc",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "label": "normal.RData",
+        "restricted": false,
+        "directoryLabel": "rdata",
+        "version": 1,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 49580,
+          "persistentId": "",
+          "filename": "normal.RData",
+          "contentType": "application/gzip",
+          "friendlyType": "Gzip Archive",
+          "filesize": 10187,
+          "storageIdentifier": "s3://dataverse:1931d262153-1153130ed8a4",
+          "rootDataFileId": -1,
+          "md5": "b9be585f2e00c929d1a29702f666e9fd",
+          "checksum": {
+            "type": "MD5",
+            "value": "b9be585f2e00c929d1a29702f666e9fd"
+          },
+          "tabularData": false,
+          "creationDate": "2024-11-11",
+          "directoryLabel": "rdata",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "label": "normal.nc",
+        "restricted": false,
+        "directoryLabel": "nc",
+        "version": 2,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 49512,
+          "persistentId": "",
+          "filename": "normal.nc",
+          "contentType": "application/netcdf",
+          "friendlyType": "Network Common Data Form",
+          "filesize": 132139380,
+          "storageIdentifier": "s3://dataverse:192e0356d70-4f17e9479cdb",
+          "rootDataFileId": -1,
+          "md5": "906765d58e4555a9a7d869c2cf3b3f82",
+          "checksum": {
+            "type": "MD5",
+            "value": "906765d58e4555a9a7d869c2cf3b3f82"
+          },
+          "tabularData": false,
+          "creationDate": "2024-10-30",
+          "directoryLabel": "nc",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "label": "normal_pdf.pdf",
+        "restricted": false,
+        "directoryLabel": "pdf",
+        "version": 1,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 49714,
+          "persistentId": "",
+          "filename": "normal_pdf.pdf",
+          "contentType": "application/pdf",
+          "friendlyType": "Adobe PDF",
+          "filesize": 551643,
+          "storageIdentifier": "s3://dataverse:19398f688c0-92a54b3fb1d7",
+          "rootDataFileId": -1,
+          "md5": "e91d2231dfaca2319c9e63aa365ca5e5",
+          "checksum": {
+            "type": "MD5",
+            "value": "e91d2231dfaca2319c9e63aa365ca5e5"
+          },
+          "tabularData": false,
+          "creationDate": "2024-12-05",
+          "directoryLabel": "pdf",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "description": "This is broken version of the file",
+        "label": "original - borken.tif",
+        "restricted": false,
+        "directoryLabel": "tif",
+        "version": 2,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 49506,
+          "persistentId": "",
+          "filename": "original - borken.tif",
+          "contentType": "image/tiff",
+          "friendlyType": "TIFF Image",
+          "filesize": 6171,
+          "description": "This is broken version of the file",
+          "storageIdentifier": "s3://dataverse:192d9fb5b56-42b754f1e6f3",
+          "rootDataFileId": -1,
+          "md5": "c74e73d2041306be72d616715ac50a7f",
+          "checksum": {
+            "type": "MD5",
+            "value": "c74e73d2041306be72d616715ac50a7f"
+          },
+          "tabularData": false,
+          "creationDate": "2024-10-29",
+          "directoryLabel": "tif",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "label": "original.tif",
+        "restricted": false,
+        "directoryLabel": "tif",
+        "version": 2,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 49505,
+          "persistentId": "",
+          "filename": "original.tif",
+          "contentType": "image/tiff",
+          "friendlyType": "TIFF Image",
+          "filesize": 7828,
+          "storageIdentifier": "s3://dataverse:192d9fa6331-252edb6cb950",
+          "rootDataFileId": -1,
+          "md5": "7ea3f20f076c8f416a7a1fbf652e322c",
+          "checksum": {
+            "type": "MD5",
+            "value": "7ea3f20f076c8f416a7a1fbf652e322c"
+          },
+          "tabularData": false,
+          "creationDate": "2024-10-29",
+          "directoryLabel": "tif",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "label": "png_in_a_zip_file.zip",
+        "restricted": false,
+        "version": 1,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 51262,
+          "persistentId": "",
+          "filename": "png_in_a_zip_file.zip",
+          "contentType": "application/zip",
+          "friendlyType": "ZIP Archive",
+          "filesize": 5017,
+          "storageIdentifier": "s3://dataverse:19611f49ccd-c0af316e770d",
+          "rootDataFileId": -1,
+          "md5": "2ea1eee1668ff4bb2237ae4a52c9d335",
+          "checksum": {
+            "type": "MD5",
+            "value": "2ea1eee1668ff4bb2237ae4a52c9d335"
+          },
+          "tabularData": false,
+          "creationDate": "2025-04-07",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "description": "This is a restricted file",
+        "label": "restricted_file.txt",
+        "restricted": false,
+        "directoryLabel": "restricted",
+        "version": 5,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 49874,
+          "persistentId": "",
+          "filename": "restricted_file.txt",
+          "contentType": "text/plain",
+          "friendlyType": "Plain Text",
+          "filesize": 15,
+          "description": "This is a restricted file",
+          "storageIdentifier": "s3://dataverse:193bb78b5f2-1053dfac7b2e",
+          "rootDataFileId": -1,
+          "md5": "376f6fcf779d2f05f528ccae3b70c78f",
+          "checksum": {
+            "type": "MD5",
+            "value": "376f6fcf779d2f05f528ccae3b70c78f"
+          },
+          "tabularData": false,
+          "creationDate": "2024-12-12",
+          "directoryLabel": "restricted",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "description": "With request access",
+        "label": "restricted_file_without_terms.txt",
+        "restricted": false,
+        "directoryLabel": "restricted",
+        "version": 7,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 49875,
+          "persistentId": "",
+          "filename": "restricted_file_without_terms.txt",
+          "contentType": "text/plain",
+          "friendlyType": "Plain Text",
+          "filesize": 29,
+          "description": "With request access",
+          "storageIdentifier": "s3://dataverse:193bb7a71d2-87e1ad7db417",
+          "rootDataFileId": -1,
+          "md5": "5c5acfa06386607bcf895155deb3962a",
+          "checksum": {
+            "type": "MD5",
+            "value": "5c5acfa06386607bcf895155deb3962a"
+          },
+          "tabularData": false,
+          "creationDate": "2024-12-12",
+          "directoryLabel": "restricted",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "label": "sample_mp3_audio.corrupted.mp3",
+        "restricted": false,
+        "directoryLabel": "audio",
+        "version": 1,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 49629,
+          "persistentId": "",
+          "filename": "sample_mp3_audio.corrupted.mp3",
+          "contentType": "audio/mpeg",
+          "friendlyType": "MP3 Audio",
+          "filesize": 6658925,
+          "storageIdentifier": "s3://dataverse:1934baa03fd-e22136fd7979",
+          "rootDataFileId": -1,
+          "md5": "f05aa5bec8a0e92622465348e5789324",
+          "checksum": {
+            "type": "MD5",
+            "value": "f05aa5bec8a0e92622465348e5789324"
+          },
+          "tabularData": false,
+          "creationDate": "2024-11-20",
+          "directoryLabel": "audio",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "label": "sample_mp3_audio.mp3",
+        "restricted": false,
+        "directoryLabel": "audio",
+        "version": 1,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 49617,
+          "persistentId": "",
+          "filename": "sample_mp3_audio.mp3",
+          "contentType": "audio/mpeg",
+          "friendlyType": "MP3 Audio",
+          "filesize": 6658925,
+          "storageIdentifier": "s3://dataverse:1934ae2c400-84d0116e07e1",
+          "rootDataFileId": -1,
+          "md5": "d77882286b08a3e2f4823be9e6cdc814",
+          "checksum": {
+            "type": "MD5",
+            "value": "d77882286b08a3e2f4823be9e6cdc814"
+          },
+          "tabularData": false,
+          "creationDate": "2024-11-20",
+          "directoryLabel": "audio",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "label": "spreadsheet_normal.xlsx",
+        "restricted": false,
+        "directoryLabel": "spreadsheet",
+        "version": 1,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 49712,
+          "persistentId": "",
+          "filename": "spreadsheet_normal.xlsx",
+          "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "friendlyType": "MS Excel Spreadsheet",
+          "filesize": 6187,
+          "storageIdentifier": "s3://dataverse:19398c82743-4fdbc483f240",
+          "rootDataFileId": -1,
+          "md5": "fa6bfa5f26de80c9e11fd65ea54f67e6",
+          "checksum": {
+            "type": "MD5",
+            "value": "fa6bfa5f26de80c9e11fd65ea54f67e6"
+          },
+          "tabularData": false,
+          "creationDate": "2024-12-05",
+          "directoryLabel": "spreadsheet",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "label": "spreadsheet_normal_broken.xlsx",
+        "restricted": false,
+        "directoryLabel": "spreadsheet",
+        "version": 1,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 49713,
+          "persistentId": "",
+          "filename": "spreadsheet_normal_broken.xlsx",
+          "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "friendlyType": "MS Excel Spreadsheet",
+          "filesize": 4081,
+          "storageIdentifier": "s3://dataverse:19398c827a1-0b98a3e30b94",
+          "rootDataFileId": -1,
+          "md5": "61be034aad144b1a0da58ff5e7e75f41",
+          "checksum": {
+            "type": "MD5",
+            "value": "61be034aad144b1a0da58ff5e7e75f41"
+          },
+          "tabularData": false,
+          "creationDate": "2024-12-05",
+          "directoryLabel": "spreadsheet",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "description": "For testing downloading the original file format in a zip bundle",
+        "label": "this_is_a_xlsx_file.tab",
+        "restricted": true,
+        "directoryLabel": "test_folder",
+        "version": 5,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 49567,
+          "persistentId": "",
+          "filename": "this_is_a_xlsx_file.tab",
+          "contentType": "text/tab-separated-values",
+          "friendlyType": "Tab-Delimited",
+          "filesize": 4,
+          "description": "For testing downloading the original file format in a zip bundle",
+          "storageIdentifier": "s3://dataverse:19307c1f0a4-8183a6d55eee",
+          "originalFileFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "originalFormatLabel": "MS Excel Spreadsheet",
+          "originalFileSize": 8372,
+          "originalFileName": "this_is_a_xlsx_file.xlsx",
+          "UNF": "UNF:6:psLQjMqLPZMi4SymBsfUnA==",
+          "rootDataFileId": -1,
+          "md5": "6f58f4201b6fc60b7f01ad527363e466",
+          "checksum": {
+            "type": "MD5",
+            "value": "6f58f4201b6fc60b7f01ad527363e466"
+          },
+          "tabularData": true,
+          "creationDate": "2024-11-07",
+          "directoryLabel": "test_folder",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "label": "tsv_file.tsv",
+        "restricted": false,
+        "version": 1,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 52052,
+          "persistentId": "",
+          "filename": "tsv_file.tsv",
+          "contentType": "text/tsv",
+          "friendlyType": "Tab-Separated Values",
+          "filesize": 9,
+          "storageIdentifier": "s3://dataverse:196ef7afecb-6081355f7d19",
+          "rootDataFileId": -1,
+          "md5": "f962c3dff9a70b4724579c8e8c5edcfd",
+          "checksum": {
+            "type": "MD5",
+            "value": "f962c3dff9a70b4724579c8e8c5edcfd"
+          },
+          "tabularData": false,
+          "creationDate": "2025-05-20",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "label": "unsupported_ext.est",
+        "restricted": false,
+        "directoryLabel": "unspported file/sub_dir",
+        "version": 2,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 49518,
+          "persistentId": "",
+          "filename": "unsupported_ext.est",
+          "contentType": "application/octet-stream",
+          "friendlyType": "Unknown",
+          "filesize": 0,
+          "storageIdentifier": "s3://dataverse:192e37df528-5b039e4f26ee",
+          "rootDataFileId": -1,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e",
+          "checksum": {
+            "type": "MD5",
+            "value": "d41d8cd98f00b204e9800998ecf8427e"
+          },
+          "tabularData": false,
+          "creationDate": "2024-10-31",
+          "directoryLabel": "unspported file/sub_dir",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "label": "x.txt",
+        "restricted": false,
+        "version": 2,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 51179,
+          "persistentId": "",
+          "filename": "x.txt",
+          "contentType": "text/plain",
+          "friendlyType": "Plain Text",
+          "filesize": 0,
+          "storageIdentifier": "s3://dataverse:195d8749ba9-14dc7e7d48ad",
+          "rootDataFileId": -1,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e",
+          "checksum": {
+            "type": "MD5",
+            "value": "d41d8cd98f00b204e9800998ecf8427e"
+          },
+          "tabularData": false,
+          "creationDate": "2025-03-27",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "label": "zip_file.zip",
+        "restricted": false,
+        "version": 1,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 51259,
+          "persistentId": "",
+          "filename": "zip_file.zip",
+          "contentType": "application/zip",
+          "friendlyType": "ZIP Archive",
+          "filesize": 1188,
+          "storageIdentifier": "s3://dataverse:1961125847e-ce29cb36d47b",
+          "rootDataFileId": -1,
+          "md5": "614ae118226aaa05596d21c4ffe03632",
+          "checksum": {
+            "type": "MD5",
+            "value": "614ae118226aaa05596d21c4ffe03632"
+          },
+          "tabularData": false,
+          "creationDate": "2025-04-07",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      },
+      {
+        "description": "This file has special character '~' in its file name.",
+        "label": "~filewithspecialchar.txt",
+        "restricted": false,
+        "directoryLabel": "special_char",
+        "version": 1,
+        "datasetVersionId": 8605,
+        "dataFile": {
+          "id": 51014,
+          "persistentId": "",
+          "filename": "~filewithspecialchar.txt",
+          "contentType": "text/plain",
+          "friendlyType": "Plain Text",
+          "filesize": 24,
+          "description": "This file has special character '~' in its file name.",
+          "storageIdentifier": "s3://dataverse:195ba34de03-4dc4f523c51f",
+          "rootDataFileId": -1,
+          "md5": "68b45d3f6059e6068379027ca9a102ac",
+          "checksum": {
+            "type": "MD5",
+            "value": "68b45d3f6059e6068379027ca9a102ac"
+          },
+          "tabularData": false,
+          "creationDate": "2025-03-21",
+          "directoryLabel": "special_char",
+          "lastUpdateTime": "2026-04-30T14:56:16Z",
+          "fileAccessRequest": false
+        }
+      }
+    ],
+    "citation": "Lui, Ken; Another, Author, 2026, \"Test dataset for data curation serivce\", https://doi.org/10.80240/FS2/FSCZB5V, Borealis, DRAFT VERSION, UNF:6:psLQjMqLPZMi4SymBsfUnA== [fileUNF]"
+  }
+}
