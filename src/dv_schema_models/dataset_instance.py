@@ -156,15 +156,12 @@ class DatasetExport(BaseModel):
         return self.data.latestVersion.get_value(block_name, type_name)
 
 
-def load_dataset(path: str) -> DatasetExport:
-    """Read a dataset export JSON file from disk and parse it into a DatasetExport.
+def load_dataset(metadata: dict) -> DatasetExport:
+    """Parse a dataset export JSON payload (already loaded as a dict) into a DatasetExport.
 
     Accepts either the full `{status, data: {...}}` export envelope, or a bare
     `data`-shaped payload (no envelope), by trying each model in turn.
     """
-    with pathlib.Path(path).open("r", encoding="utf-8") as f:
-        raw = json.load(f)
-
-    if "data" in raw:
-        return DatasetExport.model_validate(raw)
-    return DatasetExport(status="OK", data=DatasetData.model_validate(raw))
+    if "data" in metadata:
+        return DatasetExport.model_validate(metadata)
+    return DatasetExport(status="OK", data=DatasetData.model_validate(metadata))
