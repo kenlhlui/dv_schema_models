@@ -11,6 +11,7 @@ depending on typeClass/multiple:
   - compound, multiple=False                          -> a dict of nested fields
   - compound, multiple=True                           -> a list of dicts of nested fields
 """
+# ruff: noqa: N815
 
 from __future__ import annotations
 
@@ -82,7 +83,25 @@ class DatasetVersion(BaseModel):
     model_config = ConfigDict(extra="ignore")
 
     id: int
+    datasetId: int
     versionState: str
+    datasetPersistentId: str
+    datasetType: (
+        str | None
+    )  # backward compatibility: some datasets /older Dataverse versions don't have this field
+    storageIdentifier: str
+    internalVersionNumber: int
+    versionState: str
+    latestVersionPublishingState: str
+    deaccessionLink: str | None
+    UNF: str | None
+    lastUpdateTime: str
+    createTime: str
+    termsOfUse: str | None
+    termsOfAccess: str | None
+    dataAccessPlace: str | None
+    fileAccessRequest: bool
+
     metadataBlocks: dict[str, MetadataBlockInstance]
 
     def get_value(self, block_name: str, type_name: str) -> Any:
@@ -99,6 +118,15 @@ class DatasetData(BaseModel):
     id: int
     identifier: str
     persistentUrl: str
+    protocol: str
+    authority: str
+    separator: str
+    publisher: str
+    storageIdentifier: str
+    datasetType: (
+        str | None
+    )  # backward compatibility: some datasets /older Dataverse versions don't have this field
+
     latestVersion: DatasetVersion
 
 
