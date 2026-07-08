@@ -58,13 +58,18 @@ from dv_schema_models.dataset_instance import load_dataset
 
 dataset = load_dataset(json.load(open("ds_metadata.json")))
 
+# Load the possible typeNames for a given block
+dataset.field_names("citation")  # ['title', 'author', 'keyword', ...] 
+dataset.data.latestVersion.metadataBlocks.get("citation").field_names() # same
+
+
 # Shortcut from the top level
 dataset.get_value("citation", "title")      # plain string
 
 # Or drill down
 block = dataset.data.latestVersion.metadataBlocks.get("citation")
 block.get_value("keyword")                  # unwrapped Python value (str / list / dict)
-block.get_field("author").simple_value()    # same, from the DatasetFieldValue directly
+block.get_field("author").simple_value()    # [{'authorName': 'Author1', 'authorAffiliation': 'Author1Aff'...} ... {'authorName': 'Author2', 'authorAffiliation': 'Author2Aff'...}]
 ```
 
 ### 3. Validate instance values against the schema
