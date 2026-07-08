@@ -2,6 +2,21 @@
 
 Pydantic models for Dataverse metadata — parse the schema, load dataset exports, and validate field values against the schema.
 
+## Pre-requisites
+1. Python 3.13+ 
+
+## Installation
+
+1. With `uv` (recommended):
+```bash
+uv add dv_schema_models
+```
+
+2. With `pip`:
+```bash
+pip install dv_schema_models
+```
+
 ## Concepts
 
 | Thing | What it is |
@@ -95,3 +110,9 @@ record.keyword        # None if not present in this dataset (optional fields def
 ```json
 {"status": "OK", "data": {"latestVersion": {"metadataBlocks": {"citation": {"fields": [...]}}}}}
 ```
+
+## Citation
+If you use this library in your work, please cite according to [CITATION](CITATION.cff)
+
+## License
+[MIT](LICENSE)
