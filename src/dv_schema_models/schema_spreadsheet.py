@@ -4,6 +4,7 @@ import random
 from pathlib import Path
 
 import xlsxwriter
+from xlsxwriter.format import Format
 
 from dv_schema_models.dataverse_schema import (
     DataverseSchemaResponse,
@@ -29,16 +30,20 @@ class SchemaSpreadsheet:
         return ["Field", "Definition", "Usage", "Repeatable (Y/N)", "Example"]
 
     def _title_fmt(self, workbook: xlsxwriter.Workbook):
-        return workbook.add_format({
-            "bold": True,
-        })
+        return workbook.add_format(
+            {
+                "bold": True,
+            }
+        )
 
     def _block_fmt(self, workbook: xlsxwriter.Workbook):
-        return workbook.add_format({
-            "bold": True,
-            "align": "center",
-            "bg_color": f"#{random.randrange(0x1000000):06x}",
-        })
+        return workbook.add_format(
+            {
+                "bold": True,
+                "align": "center",
+                "bg_color": f"#{random.randrange(0x1000000):06x}",
+            }
+        )
 
     @staticmethod
     def _field_rows(field: MetadataField) -> list[Row]:
@@ -77,44 +82,61 @@ class SchemaSpreadsheet:
         )
         return rows
 
-    def _write_block(
+    def _write_sheet(
         self,
         workbook: xlsxwriter.Workbook,
-        block: MetadataBlock,
-        cell_fmts: dict[tuple[bool, bool], object],
+        sheet_name: str,
+        blocks: list[MetadataBlock],
+        cell_fmts: dict[tuple[bool, bool], Format],
     ) -> None:
-        sheet = workbook.add_worksheet(block.displayName.removesuffix(" Metadata")[:31])
+        sheet = workbook.add_worksheet(sheet_name)
         for col, width in enumerate(COLUMN_WIDTHS):
             sheet.set_column(col, col, width)
 
         sheet.write_row(0, 0, self._header_row(), self._title_fmt(workbook))
-        sheet.merge_range(
-            1, 0, 1, 4, f"{block.displayName} Block", self._block_fmt(workbook)
-        )
 
-        row_num = 2
-        for field in sorted(block.fields.values(), key=lambda f: f.displayOrder):
-            for title, *cells, bold, end in self._field_rows(field):
-                sheet.write(row_num, 0, title, cell_fmts[bold, end])
-                for col, value in enumerate(cells, start=1):
-                    sheet.write(row_num, col, value, cell_fmts[False, end])
-                row_num += 1
+        row_num = 1
+        for block in blocks:
+            sheet.merge_range(
+                row_num,
+                0,
+                row_num,
+                4,
+                f"{block.displayName} Block",
+                self._block_fmt(workbook),
+            )
+            row_num += 1
+            for field in sorted(block.fields.values(), key=lambda f: f.displayOrder):
+                for title, *cells, bold, end in self._field_rows(field):
+                    sheet.write(row_num, 0, title, cell_fmts[bold, end])
+                    for col, value in enumerate(cells, start=1):
+                        sheet.write(row_num, col, value, cell_fmts[False, end])
+                    row_num += 1
 
     def write(self, path: str | Path) -> Path:
-        """Write one worksheet per metadata block to an .xlsx file at `path`."""
+        """Write an 'All' worksheet plus one per metadata block to an .xlsx file at `path`."""
         path = Path(path)
         workbook = xlsxwriter.Workbook(str(path))
         cell_fmts = {
-            (bold, end): workbook.add_format({
-                "bold": bold,
-                "bottom": 1 if end else 0,
-                "text_wrap": True,
-                "valign": "top",
-            })
+            (bold, end): workbook.add_format(
+                {
+                    "bold": bold,
+                    "bottom": 1 if end else 0,
+                    "text_wrap": True,
+                    "valign": "top",
+                }
+            )
             for bold in (True, False)
             for end in (True, False)
         }
-        for block in self.schema:
-            self._write_block(workbook, block, cell_fmts)
+        blocks = sorted(self.schema, key=lambda b: b.id)
+        self._write_sheet(workbook, "All", blocks, cell_fmts)
+        for block in blocks:
+            self._write_sheet(
+                workbook,
+                block.displayName.removesuffix(" Metadata")[:31],
+                [block],
+                cell_fmts,
+            )
         workbook.close()
         return path
