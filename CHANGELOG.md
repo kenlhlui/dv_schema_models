@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0-a.3](https://github.com/kenlhlui/dv_schema_models/compare/v0.2.0-a.2...v0.2.0-a.3) (2026-07-09)
+
+
+### Features
+
+* create XLSX spreadsheet from schema for all the possible fields ([#6](https://github.com/kenlhlui/dv_schema_models/issues/6)) ([07fb962](https://github.com/kenlhlui/dv_schema_models/commit/07fb9622748ac28edf9871f5b5fd40262d862458))
+
 ## [0.2.0-a.2](https://github.com/kenlhlui/dv_schema_models/compare/v0.2.0-a.1...v0.2.0-a.2) (2026-07-08)
 
 
