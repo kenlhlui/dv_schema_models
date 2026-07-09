@@ -19,6 +19,11 @@ Repository = "https://github.com/kenlhlui/dv_schema_models.git"
 Issues = "https://github.com/kenlhlui/dv_schema_models/issues"
 Changelog = "https://github.com/kenlhlui/dv_schema_models/blob/main/CHANGELOG.md"
 
+[project.optional-dependencies]
+spreadsheet = [
+    "xlsxwriter>=3.2.9",
+]
+
 
 [tool.cff-from-621.static]
 message = "If you use this software, please cite it."

@@ -21,6 +21,11 @@ uv add dv_schema_models
 pip install dv_schema_models
 ```
 
+To export schemas to Excel (see [usage #5](#5-export-the-schema-to-a-spreadsheet)), install with the `spreadsheet` extra:
+```bash
+uv add "dv_schema_models[spreadsheet]"   # or: pip install "dv_schema_models[spreadsheet]"
+```
+
 ## Concepts
 
 | Thing | What it is |
@@ -111,6 +116,21 @@ record.author         # list[...] for multiple=True compound fields
 record.keyword        # None if not present in this dataset (optional fields default to None)
 # Note: field names with dots become underscores — e.g. 'resolution.Spatial' → record.resolution_Spatial
 ```
+
+### 5. Export the schema to a spreadsheet
+
+Requires the `spreadsheet` extra (see [Installation](#installation)).
+
+```python
+import json
+from dv_schema_models.dataverse_schema import load_schema
+from dv_schema_models.schema_spreadsheet import SchemaSpreadsheet
+
+schema = load_schema(json.load(open("dv_schema.json")))
+SchemaSpreadsheet(schema).write("dv_schema.xlsx")
+```
+
+Writes an `.xlsx` workbook with one formatted worksheet per metadata block plus a combined **All** sheet. See [docs/schema_spreadsheet/README.md](docs/schema_spreadsheet/README.md) for the output layout, column mapping, and architecture.
 
 ## Input file shapes
 
