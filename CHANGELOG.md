@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.2.0 (2026-07-17)
+
+## v0.2.0-a.3 (2026-07-09)
+
+### Feat
+
+- create XLSX spreadsheet from schema for all the possible fields (#6)
+
 ## [0.2.0-a.3](https://github.com/kenlhlui/dv_schema_models/compare/v0.2.0-a.2...v0.2.0-a.3) (2026-07-09)
 
 
