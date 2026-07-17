@@ -7,7 +7,7 @@ exports, and validate field values against the schema.
 > This library is under active development and the API is not yet stable. Breaking changes may occur between releases. Please pin to a specific version in your `pyproject.toml` or `requirements.txt` if you want to avoid surprises.
 
 ## Pre-requisites
-1. Python 3.9+
+1. Python 3.10+
 
 ## Installation
 
@@ -75,6 +75,9 @@ dataset.get_value("citation", "title")      # plain string
 block = dataset.data.latestVersion.metadataBlocks.get("citation")
 block.get_value("keyword")                  # unwrapped Python value (str / list / dict)
 block.get_field("author").simple_value()    # [{'authorName': 'Author1', 'authorAffiliation': 'Author1Aff'...} ... {'authorName': 'Author2', 'authorAffiliation': 'Author2Aff'...}]
+
+# Pull one subfield out of a compound field
+block.get_subfield_values("author", "authorName")  # ['Author1', 'Author2']
 ```
 
 ### 3. Validate instance values against the schema
