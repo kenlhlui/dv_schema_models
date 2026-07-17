@@ -81,6 +81,12 @@ class MetadataBlockInstance(BaseModel):
         field = self.get_field(type_name)
         return field.simple_value() if field else None
 
+    def get_subfield_values(self, type_name: str, subfield: str) -> list[Any]:
+        """Collect one subfield from a compound field, e.g. get_subfield_values('author', 'authorName') -> ['Author1', 'Author2']."""  # noqa: D402
+        value = self.get_value(type_name)
+        items = value if isinstance(value, list) else [value] if value else []
+        return [item[subfield] for item in items if subfield in item]
+
 
 class DatasetVersion(BaseModel):
     """One version of a dataset, holding the actual metadata block values and files."""
