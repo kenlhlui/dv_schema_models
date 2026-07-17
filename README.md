@@ -7,7 +7,7 @@ exports, and validate field values against the schema.
 > This library is under active development and the API is not yet stable. Breaking changes may occur between releases. Please pin to a specific version in your `pyproject.toml` or `requirements.txt` if you want to avoid surprises.
 
 ## Pre-requisites
-1. Python 3.13+ 
+1. Python 3.9+
 
 ## Installation
 
