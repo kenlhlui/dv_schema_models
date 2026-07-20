@@ -107,8 +107,8 @@ class DatasetVersion(BaseModel):
     UNF: str | None = Field(None)
     lastUpdateTime: str
     createTime: str
-    termsOfUse: str | None
-    termsOfAccess: str | None
+    termsOfUse: str | None = Field(None)
+    termsOfAccess: str | None = Field(None)
     dataAccessPlace: str | None = Field(None)
     fileAccessRequest: bool
 
