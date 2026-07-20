@@ -103,7 +103,7 @@ class DatasetVersion(BaseModel):
     storageIdentifier: str
     internalVersionNumber: int
     latestVersionPublishingState: str
-    deaccessionLink: str | None
+    deaccessionLink: str | None = Field(None)
     UNF: str | None = Field(None)
     lastUpdateTime: str
     createTime: str
