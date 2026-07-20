@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.2 (2026-07-20)
+
+### Fix
+
+- allow deaccessionLink is None
+
 ## v0.3.1 (2026-07-20)
 
 ### Fix
