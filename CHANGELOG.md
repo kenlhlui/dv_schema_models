@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.8.3 (2026-07-21)
+
+### Fix
+
+- standardize name of roleAlias in RoleAssignment
+
 ## v0.8.2 (2026-07-21)
 
 ### Fix
