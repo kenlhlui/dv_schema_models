@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.8.2 (2026-07-21)
+
+### Fix
+
+- populate correctly in role_alias (_role_alias in the source)
+
 ## v0.8.1 (2026-07-21)
 
 ### Fix
