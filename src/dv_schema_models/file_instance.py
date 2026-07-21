@@ -73,9 +73,28 @@ class FileInstance(BaseModel):
 
         Returns None (and logs a warning) if any present value isn't int/float.
         """
-        values = [getattr(i.dataFile, field) for i in instances if i.dataFile is not None]
+        values = [
+            getattr(i.dataFile, field) for i in instances if i.dataFile is not None
+        ]
         for v in values:
             if v is not None and not isinstance(v, (int, float)):
                 logger.warning("sum_field: field %r has non-numeric value %r", field, v)
                 return None
         return sum(v for v in values if v is not None)
+
+    @staticmethod
+    def list_field(instances: list[FileInstance], field: str) -> list[Any]:
+        """Get the values of a field across instances, e.g. field="dataFile.checksum.type".
+
+        Skips instances where the path is missing or resolves to None.
+        """
+        result = []
+        for i in instances:
+            value: Any = i
+            for part in field.split("."):
+                value = getattr(value, part, None)
+                if value is None:
+                    break
+            if value is not None:
+                result.append(value)
+        return result
