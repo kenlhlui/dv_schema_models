@@ -117,7 +117,7 @@ class DatasetVersion(BaseModel):
 
     metadataBlocks: dict[str, MetadataBlockInstance]
 
-    files: list[FileInstance] | None = None
+    files: list[FileInstance] | list | None = None
 
     def get_value(self, block_name: str, type_name: str) -> Any:
         """Get a field's plain value by block name (e.g. 'citation') and field typeName (e.g. 'title')."""
