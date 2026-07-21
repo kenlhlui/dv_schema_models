@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.8.1 (2026-07-21)
+
+### Fix
+
+- accept error status to load_role_assignments (#13)
+
 ## v0.8.0 (2026-07-21)
 
 ### Feat
