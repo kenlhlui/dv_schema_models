@@ -182,6 +182,12 @@ Writes an `.xlsx` workbook with one formatted worksheet per metadata block plus 
 {"status": "OK", "data": {"latestVersion": {"metadataBlocks": {"citation": {"fields": [...]}}}}}
 ```
 
+**Role assignments** — output of Dataverse `GET /api/datasets/:id/assignments`:
+```json
+{"status": "OK", "data": [{"id": 1, "assignee": "@user", "roleId": 7, "roleName": "Curator", "definitionPointId": 34847}]}
+```
+Error responses (e.g. `{"status": "ERROR", "message": "..."}`, no `data` key) are also accepted — see [usage #4](#4-work-with-role-assignments).
+
 ## Citation
 If you use this library in your work, please cite according to [CITATION](CITATION.cff)
 
