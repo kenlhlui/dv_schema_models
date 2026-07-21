@@ -129,7 +129,7 @@ class DatasetVersion(BaseModel):
 class DatasetData(BaseModel):
     """The 'data' payload of a dataset export response."""
 
-    model_config = ConfigDict(extra="ignore")
+    model_config = ConfigDict(extra="allow")
 
     id: int
     identifier: str
@@ -155,8 +155,12 @@ class DatasetData(BaseModel):
         """Supports both export and Native JSON endpoints."""
         return self.latestVersion
 
+    def get_raw(self, key: str) -> object | None:
+        """Get a raw top-level field not covered by the schema (requires extra='allow')."""
+        return self.model_extra.get(key) if self.model_extra else None
 
-class DatasetExport(BaseModel):
+
+class DatasetJson(BaseModel):
     """Top-level wrapper matching the raw JSON returned by GET /api/datasets/:id."""
 
     model_config = ConfigDict(extra="ignore")
@@ -192,12 +196,12 @@ class DatasetExport(BaseModel):
         return self.data.latestVersion.field_names(block_name)
 
 
-def load_dataset(metadata: dict) -> DatasetExport:
+def load_dataset(metadata: dict) -> DatasetJson:
     """Parse a dataset export JSON payload (already loaded as a dict) into a DatasetExport.
 
     Accepts either the full `{status, data: {...}}` export envelope, or a bare
     `data`-shaped payload (no envelope), by trying each model in turn.
     """
     if "data" in metadata:
-        return DatasetExport.model_validate(metadata)
-    return DatasetExport(status="OK", data=DatasetData.model_validate(metadata))
+        return DatasetJson.model_validate(metadata)
+    return DatasetJson(status="OK", data=DatasetData.model_validate(metadata))
