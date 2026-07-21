@@ -5,19 +5,19 @@ Corresponds to "List Role Assignments in a Dataset" endpoint: https://borealisda
 """
 # ruff: noqa: N815
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class RoleAssignment(BaseModel):
     """A single role assignment."""
 
-    model_config = ConfigDict(extra="allow")
+    model_config = ConfigDict(extra="allow", populate_by_name=True)
 
     id: int | None = None
     assignee: str | None = None
     roleId: int | None = None
     roleName: str | None = None
-    _roleAlias: str | None = None
+    role_alias: str | None = Field(default=None, alias="_roleAlias")
     definitionPointId: int | None = None
 
     def get_raw(self, key: str) -> object | None:
