@@ -17,7 +17,7 @@ class RoleAssignment(BaseModel):
     assignee: str | None = None
     roleId: int | None = None
     roleName: str | None = None
-    role_alias: str | None = Field(default=None, alias="_roleAlias")
+    roleAlias: str | None = Field(default=None, alias="_roleAlias")
     definitionPointId: int | None = None
 
     def get_raw(self, key: str) -> object | None:
