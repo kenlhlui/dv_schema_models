@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.3 (2026-07-20)
+
+### Fix
+
+- add releaseTime to DatasetVersion
+
 ## v0.3.2 (2026-07-20)
 
 ### Fix
