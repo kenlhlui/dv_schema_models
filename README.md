@@ -80,7 +80,21 @@ block.get_field("author").simple_value()    # [{'authorName': 'Author1', 'author
 block.get_subfield_values("author", "authorName")  # ['Author1', 'Author2']
 ```
 
-### 3. Validate instance values against the schema
+### 3. Work with files
+
+```python
+from dv_schema_models.dataset_instance import load_dataset
+from dv_schema_models.file_instance import FileInstance
+
+dataset = load_dataset(json.load(open("ds_metadata.json")))
+
+files = dataset.data.latestVersion.files or []
+FileInstance.sum_field(files, "filesize")   # sum a DataFile field across files, e.g. total filesize
+```
+
+Skips files with no `dataFile` or a `None` value for the field. Returns `None` (and logs a warning) if any present value isn't numeric.
+
+### 4. Validate instance values against the schema
 
 ```python
 import json
@@ -102,7 +116,7 @@ record = CitationRecord.model_validate(raw)
 
 The generated model enforces field names, required/optional status, list wrapping for `multiple=True` fields, and `int`/`float` types where declared by the schema.
 
-### 4. Discover available fields
+### 5. Discover available fields
 
 ```python
 # Fields actually present in this dataset instance
@@ -120,7 +134,7 @@ record.keyword        # None if not present in this dataset (optional fields def
 # Note: field names with dots become underscores — e.g. 'resolution.Spatial' → record.resolution_Spatial
 ```
 
-### 5. Export the schema to a spreadsheet
+### 6. Export the schema to a spreadsheet
 
 Requires the `spreadsheet` extra (see [Installation](#installation)).
 
