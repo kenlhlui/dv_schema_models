@@ -71,9 +71,9 @@ class RoleAssignments(BaseModel):
 def load_role_assignments(metadata: dict) -> RoleAssignments:
     """Parse a role assignments JSON payload (already loaded as a dict) into a RoleAssignments.
 
-    Accepts either the full `{status, data: {...}}` export envelope, or a bare
-    `data`-shaped payload (no envelope), by trying each model in turn.
+    Accepts the full `{status, data: [...]}` export envelope (including error
+    responses with no `data`), or a bare single role assignment dict (no envelope).
     """
-    if "data" in metadata:
+    if "data" in metadata or "status" in metadata:
         return RoleAssignments.model_validate(metadata)
-    return RoleAssignments(status="OK", data=RoleAssignment.model_validate(metadata))
+    return RoleAssignments(status="OK", data=[RoleAssignment.model_validate(metadata)])
