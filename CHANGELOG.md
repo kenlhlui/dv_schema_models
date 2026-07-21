@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.5.0 (2026-07-20)
+
+### Feat
+
+- add file_instance method that allow querying files (#11)
+
 ## v0.4.0 (2026-07-20)
 
 ### Feat
