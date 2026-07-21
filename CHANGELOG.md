@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.7.0 (2026-07-21)
+
+### Feat
+
+- add list_field method to list[FileInstance]
+
+### Fix
+
+- allow versionNumber and versionMinorNumber be none
+
 ## v0.6.0 (2026-07-21)
 
 ### Feat
