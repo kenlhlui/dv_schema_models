@@ -125,6 +125,10 @@ class DatasetVersion(BaseModel):
         block = self.metadataBlocks.get(block_name)
         return block.field_names() if block else []
 
+    def get_raw(self, key: str) -> object | None:
+        """Get a raw top-level field not covered by the schema (requires extra='allow')."""
+        return self.model_extra.get(key) if self.model_extra else None
+
 
 class DatasetData(BaseModel):
     """The 'data' payload of a dataset export response."""
