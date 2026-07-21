@@ -103,7 +103,9 @@ class DatasetVersion(BaseModel):
         str | None
     )  # backward compatibility: some datasets /older Dataverse versions don't have this field
     storageIdentifier: str
+    versionNumber: int | None
     internalVersionNumber: int
+    versionMinorNumber: int | None
     latestVersionPublishingState: str
     deaccessionLink: str | None = Field(None)
     UNF: str | None = Field(None)
