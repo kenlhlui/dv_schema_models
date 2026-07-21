@@ -97,7 +97,25 @@ FileInstance.list_field(files, "dataFile.filename")   # list a field's values ac
 
 `list_field` takes a dotted path (e.g. `"restricted"` for a top-level field, `"dataFile.checksum.type"` for a nested one) and skips entries where the path is missing or `None`.
 
-### 4. Validate instance values against the schema
+### 4. Work with role assignments
+
+```python
+import json
+from dv_schema_models.role_assignments import load_role_assignments
+
+role_assignments = load_role_assignments(json.load(open("ds_role_assignments.json")))
+
+role_assignments.count_field("assignee")            # number of assignments with an "assignee" field
+role_assignments.count_field("roleName", "Curator") # number of assignments where roleName == "Curator"
+role_assignments.get_value("assignee")              # ['@personA', '@personB', ...]
+
+# Fields not on the schema (e.g. the `_roleAlias` Dataverse sends) are still reachable
+role_assignments.data[0].get_raw("_roleAlias")      # 'curator'
+```
+
+`load_role_assignments` also accepts the error envelope Dataverse returns when the request isn't permitted (`{"status": "ERROR", "message": "..."}`) — `data` is `None`, and `message` is reachable via `role_assignments.model_extra`.
+
+### 5. Validate instance values against the schema
 
 ```python
 import json
@@ -119,7 +137,7 @@ record = CitationRecord.model_validate(raw)
 
 The generated model enforces field names, required/optional status, list wrapping for `multiple=True` fields, and `int`/`float` types where declared by the schema.
 
-### 5. Discover available fields
+### 6. Discover available fields
 
 ```python
 # Fields actually present in this dataset instance
@@ -137,7 +155,7 @@ record.keyword        # None if not present in this dataset (optional fields def
 # Note: field names with dots become underscores — e.g. 'resolution.Spatial' → record.resolution_Spatial
 ```
 
-### 6. Export the schema to a spreadsheet
+### 7. Export the schema to a spreadsheet
 
 Requires the `spreadsheet` extra (see [Installation](#installation)).
 
@@ -163,6 +181,12 @@ Writes an `.xlsx` workbook with one formatted worksheet per metadata block plus 
 ```json
 {"status": "OK", "data": {"latestVersion": {"metadataBlocks": {"citation": {"fields": [...]}}}}}
 ```
+
+**Role assignments** — output of Dataverse `GET /api/datasets/:id/assignments`:
+```json
+{"status": "OK", "data": [{"id": 1, "assignee": "@user", "roleId": 7, "roleName": "Curator", "definitionPointId": 34847}]}
+```
+Error responses (e.g. `{"status": "ERROR", "message": "..."}`, no `data` key) are also accepted — see [usage #4](#4-work-with-role-assignments).
 
 ## Citation
 If you use this library in your work, please cite according to [CITATION](CITATION.cff)
