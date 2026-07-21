@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.8.0 (2026-07-21)
+
+### Feat
+
+- add RoleAssignment models and methods (#12)
+
 ## v0.7.0 (2026-07-21)
 
 ### Feat
