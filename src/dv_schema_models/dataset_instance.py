@@ -106,6 +106,7 @@ class DatasetVersion(BaseModel):
     deaccessionLink: str | None = Field(None)
     UNF: str | None = Field(None)
     lastUpdateTime: str
+    releaseTime: str | None = Field(None)
     createTime: str
     termsOfUse: str | None = Field(None)
     termsOfAccess: str | None = Field(None)
