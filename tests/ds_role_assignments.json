@@ -1,0 +1,85 @@
+{
+  "status": "OK",
+  "data": [
+    {
+      "id": 11815,
+      "assignee": "@personA",
+      "roleId": 7,
+      "roleName": "Curator",
+      "_roleAlias": "curator",
+      "definitionPointId": 34847
+    },
+    {
+      "id": 12996,
+      "assignee": "@personB",
+      "roleId": 29,
+      "roleName": "Contributor Plus",
+      "_roleAlias": "custom1",
+      "definitionPointId": 34847
+    },
+    {
+      "id": 12997,
+      "assignee": "@personC",
+      "roleId": 2,
+      "roleName": "File Downloader",
+      "_roleAlias": "fileDownloader",
+      "definitionPointId": 34847
+    },
+    {
+      "id": 12998,
+      "assignee": "@personD",
+      "roleId": 6,
+      "roleName": "Contributor",
+      "_roleAlias": "contributor",
+      "definitionPointId": 34847
+    },
+    {
+      "id": 12999,
+      "assignee": "@personE",
+      "roleId": 8,
+      "roleName": "Member",
+      "_roleAlias": "member",
+      "definitionPointId": 34847
+    },
+    {
+      "id": 13000,
+      "assignee": "@personF",
+      "roleId": 20,
+      "roleName": "Trusted",
+      "_roleAlias": "ut-trust",
+      "definitionPointId": 34847
+    },
+    {
+      "id": 13001,
+      "assignee": "@personG",
+      "roleId": 11,
+      "roleName": "trusted",
+      "_roleAlias": "trustedrole",
+      "definitionPointId": 34847
+    },
+    {
+      "id": 9444,
+      "assignee": "&explicit/personH",
+      "roleId": 1,
+      "roleName": "Admin",
+      "_roleAlias": "admin",
+      "definitionPointId": 22
+    },
+    {
+      "id": 14169,
+      "assignee": "&aff/abc",
+      "roleId": 5,
+      "roleName": "Dataset Creator",
+      "_roleAlias": "dsContributor",
+      "definitionPointId": 22
+    },
+    {
+      "id": 14170,
+      "assignee": ":authenticated-users",
+      "roleId": 5,
+      "roleName": "Dataset Creator",
+      "_roleAlias": "dsContributor",
+      "definitionPointId": 22
+    }
+  ]
+}
