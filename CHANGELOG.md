@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.4.0 (2026-07-20)
+
+### Feat
+
+- add get_raw to DatasetVersion
+- switch DatasetData to allow extra and introduce get_raw method
+
 ## v0.3.3 (2026-07-20)
 
 ### Fix
