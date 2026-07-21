@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.6.0 (2026-07-21)
+
+### Feat
+
+- add versionNumber and versionMinorNumber to dataset_instance
+
 ## v0.5.1 (2026-07-20)
 
 ### Fix
