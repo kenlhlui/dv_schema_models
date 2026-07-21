@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.5.1 (2026-07-20)
+
+### Fix
+
+- handle empty list in dataFile (i.e. no files in a dataset)
+
 ## v0.5.0 (2026-07-20)
 
 ### Feat
