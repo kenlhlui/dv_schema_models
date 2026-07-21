@@ -90,9 +90,12 @@ dataset = load_dataset(json.load(open("ds_metadata.json")))
 
 files = dataset.data.latestVersion.files or []
 FileInstance.sum_field(files, "filesize")   # sum a DataFile field across files, e.g. total filesize
+FileInstance.list_field(files, "dataFile.filename")   # list a field's values across files, dotted path for nested fields
 ```
 
-Skips files with no `dataFile` or a `None` value for the field. Returns `None` (and logs a warning) if any present value isn't numeric.
+`sum_field` skips files with no `dataFile` or a `None` value for the field. Returns `None` (and logs a warning) if any present value isn't numeric.
+
+`list_field` takes a dotted path (e.g. `"restricted"` for a top-level field, `"dataFile.checksum.type"` for a nested one) and skips entries where the path is missing or `None`.
 
 ### 4. Validate instance values against the schema
 
