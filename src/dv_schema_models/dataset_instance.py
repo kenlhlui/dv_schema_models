@@ -19,6 +19,8 @@ from typing import Any
 
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field
 
+from .file_instance import FileInstance
+
 
 class DatasetFieldValue(BaseModel):
     """One metadata field value, as it appears inside metadataBlocks.<block>.fields."""
@@ -114,6 +116,8 @@ class DatasetVersion(BaseModel):
     fileAccessRequest: bool
 
     metadataBlocks: dict[str, MetadataBlockInstance]
+
+    files: list[FileInstance] | None = None
 
     def get_value(self, block_name: str, type_name: str) -> Any:
         """Get a field's plain value by block name (e.g. 'citation') and field typeName (e.g. 'title')."""
