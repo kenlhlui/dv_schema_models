@@ -299,7 +299,37 @@ def load_dataset(metadata: dict) -> DatasetJson:
 
     Accepts either the full `{status, data: {...}}` export envelope, or a bare
     `data`-shaped payload (no envelope), by trying each model in turn.
+
+    Parameters
+    ----------
+    metadata
+        The JSON payload from the Dataverse API, already loaded as a dict.
+
+    Returns
+    -------
+    DatasetJson
+        The parsed dataset.
+
     """
     if "data" in metadata:
         return DatasetJson.model_validate(metadata)
     return DatasetJson(status="OK", data=DatasetData.model_validate(metadata))
+
+
+def safe_load_dataset(metadata: dict) -> DatasetJson | str:
+    """Like `load_dataset`, but return the API's error message instead of raising when status is "ERROR".
+
+    Parameters
+    ----------
+    metadata
+        The JSON payload from the Dataverse API, already loaded as a dict.
+
+    Returns
+    -------
+    DatasetJson | str
+        The parsed dataset, or an error message if the status is "ERROR".
+
+    """  # ruff:ignore[doc-line-too-long]
+    if metadata.get("status") == "ERROR":
+        return metadata.get("message", "Unknown error")
+    return load_dataset(metadata)
