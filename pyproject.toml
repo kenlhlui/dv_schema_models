@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]  # https://packaging.python.org/en/latest/specifications/pyproject-toml/
 name = "dv_schema_models"
-version = "0.0.0"
+version = "0.8.3"
 description = "Turns Harvard Dataverse Project metadatablocks schema and dataset JSON into Pydantic models."
 readme = "README.md"
 
