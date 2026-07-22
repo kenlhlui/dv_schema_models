@@ -209,7 +209,7 @@ class DatasetData(BaseModel):
     model_config = ConfigDict(extra="allow")
 
     id: int
-    identifier: str | None = None
+    identifier: str
     persistentUrl: str
     protocol: str
     authority: str
