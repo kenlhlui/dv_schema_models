@@ -11,7 +11,7 @@ depending on typeClass/multiple:
   - compound, multiple=False                          -> a dict of nested fields
   - compound, multiple=True                           -> a list of dicts of nested fields
 """
-# ruff:file-ignore[mixed-case-variable-in-class-scope, invalid-function-name]
+# ruff:file-ignore[mixed-case-variable-in-class-scope]
 
 from __future__ import annotations
 
@@ -154,20 +154,69 @@ class DatasetVersion(BaseModel):
         return self.model_extra.get(key) if self.model_extra else None
 
 
+class IsPartOf(BaseModel):
+    """The 'isPartOf' payload of a dataset export response.
+
+    See: https://github.com/IQSS/dataverse/blob/dd1859dde249df8b0612ca3899b5f00fcc6d082e/src/main/java/edu/harvard/iq/dataverse/util/json/JsonPrinter.java#L533-L562 (v6.11)
+
+    """  # ruff:ignore[doc-line-too-long]
+
+    model_config = ConfigDict(extra="allow")
+
+    type: str
+    identifier: str
+    isReleased: bool | None = None  # backward compatibility
+    persistentIdentifier: str | None = None
+    displayName: str
+    isPartOf: IsPartOf | None = None  # recursive
+
+    @staticmethod
+    def get_field_list(node: IsPartOf | None, field_name: str, *, from_root: bool = False) -> list:
+        """Return the values of a field from a node to the root.
+
+        Parameters
+        ----------
+        node
+            The node to start from. May be None, in which case an empty list is returned.
+
+        field_name
+            The name of the field to retrieve (e.g. 'identifier', 'displayName').
+
+        from_root
+            If True, return the values from the root to this node; if False, return from this node to the root.
+
+        Returns
+        -------
+        list
+            A list of the values of the specified field.
+
+        """  # ruff:ignore[doc-line-too-long]
+        values = []
+        current = node
+
+        while current is not None:
+            values.append(getattr(current, field_name))
+            current = current.isPartOf
+
+        if not from_root:
+            values.reverse()
+        return values
+
+
 class DatasetData(BaseModel):
     """The 'data' payload of a dataset export response."""
 
     model_config = ConfigDict(extra="allow")
 
     id: int
-    identifier: str
+    identifier: str | None = None
     persistentUrl: str
     protocol: str
     authority: str
     separator: str
     publisher: str
     storageIdentifier: str
-
+    isPartOf: IsPartOf | None = None
     datasetType: str | None = (
         None  # backward compatibility: some datasets /older Dataverse versions don't have this field
     )
