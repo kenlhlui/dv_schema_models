@@ -9,7 +9,14 @@ copyright = "&copy; 2026 Ken Lui"
 watch = ["src"]
 nav = [
   { Home = "index.md" },
-  { Reference = "reference.md" },
+  { Reference = [
+      { "dataset_instance" = "reference/dataset_instance.md" },
+      { "dataverse_schema" = "reference/dataverse_schema.md" },
+      { "file_instance" = "reference/file_instance.md" },
+      { "role_assignments" = "reference/role_assignments.md" },
+      { "schema_driven_records" = "reference/schema_driven_records.md" },
+      { "schema_spreadsheet" = "reference/schema_spreadsheet.md" },
+  ] },
 ]
 
 [[project.theme.palette]]
