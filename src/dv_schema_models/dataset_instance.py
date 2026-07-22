@@ -46,7 +46,7 @@ class DatasetFieldValue(BaseModel):
         return self.value
 
     def get_fields(self) -> list[DatasetFieldValue]:
-        """Return a flat list of all DatasetFieldValue objects nested inside this one.""""
+        """Return a flat list of all DatasetFieldValue objects nested inside this one."""
         return [self.typeName for f in self.value]
 
 
