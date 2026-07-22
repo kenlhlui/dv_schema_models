@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.9.0 (2026-07-22)
+
+### Feat
+
+- support IsPartOf and allow empty latestVersion in DatasetData (#16)
+
+### Fix
+
+- pyproject version
+- docstring
+
 ## v0.8.3 (2026-07-21)
 
 ### Fix
