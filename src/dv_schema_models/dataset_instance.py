@@ -11,7 +11,7 @@ depending on typeClass/multiple:
   - compound, multiple=False                          -> a dict of nested fields
   - compound, multiple=True                           -> a list of dicts of nested fields
 """
-# ruff: noqa: N815, N802
+# ruff:file-ignore[mixed-case-variable-in-class-scope, invalid-function-name]
 
 from __future__ import annotations
 
@@ -167,21 +167,29 @@ class DatasetData(BaseModel):
     separator: str
     publisher: str
     storageIdentifier: str
-    datasetType: (
-        str | None
-    )  # backward compatibility: some datasets /older Dataverse versions don't have this field
 
-    latestVersion: DatasetVersion = Field(
-        validation_alias=AliasChoices("datasetVersion", "latestVersion")
+    datasetType: str | None = (
+        None  # backward compatibility: some datasets /older Dataverse versions don't have this field
     )
 
+    latestVersion: DatasetVersion | None = Field(
+        None, validation_alias=AliasChoices("datasetVersion", "latestVersion")
+    )  # Deaccessioned dataset does not have this field.
+
     @property
-    def datasetVersion(self) -> DatasetVersion:
-        """Supports both export and Native JSON endpoints."""
+    def datasetVersion(self) -> DatasetVersion | None:
+        """Supports both export and Native JSON endpoints.
+
+        Returns
+        -------
+        DatasetVersion | None
+            The latest version of the dataset, or None if not present.
+
+        """
         return self.latestVersion
 
     def get_raw(self, key: str) -> object | None:
-        """Get a raw top-level field not covered by the schema
+        """Get a raw top-level field not covered by the schema.
 
         Parameters
         ----------
@@ -219,7 +227,7 @@ class DatasetJson(BaseModel):
         -------
             str | list[str] | dict[str, Any] | list[dict[str, Any]] | None: The value of the specified field, or None if not found.
 
-        """
+        """  # ruff:ignore[doc-line-too-long]
         return self.data.latestVersion.get_value(block_name, type_name)
 
     def field_names(self, block_name: str) -> list[str]:

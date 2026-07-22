@@ -1,0 +1,33 @@
+{
+  "status": "OK",
+  "data": {
+    "id": 51653,
+    "identifier": "FK2/3JFPH0",
+    "persistentUrl": "https://doi.org/10.80240/FK2/3JFPH0",
+    "protocol": "doi",
+    "authority": "10.80240",
+    "separator": "/",
+    "publisher": "Borealis",
+    "publicationDate": "2025-04-30",
+    "storageIdentifier": "s3://10.80240/FK2/3JFPH0",
+    "isPartOf": {
+      "type": "DATAVERSE",
+      "identifier": "guestbooktesting1",
+      "isReleased": true,
+      "displayName": "guestbook testing",
+      "isPartOf": {
+        "type": "DATAVERSE",
+        "identifier": "toronto",
+        "isReleased": true,
+        "displayName": "University of Toronto Dataverse",
+        "isPartOf": {
+          "type": "DATAVERSE",
+          "identifier": "dv",
+          "isReleased": true,
+          "displayName": "Borealis"
+        }
+      }
+    },
+    "datasetType": "dataset"
+  }
+}
