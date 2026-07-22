@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.10.0 (2026-07-22)
+
+### Feat
+
+- add safe_load_dataset (#17)
+
 ## v0.9.0 (2026-07-22)
 
 ### Feat
