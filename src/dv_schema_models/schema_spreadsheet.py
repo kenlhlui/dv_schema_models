@@ -6,11 +6,7 @@ from pathlib import Path
 import xlsxwriter
 from xlsxwriter.format import Format
 
-from dv_schema_models.dataverse_schema import (
-    DataverseSchemaResponse,
-    MetadataBlock,
-    MetadataField,
-)
+from dv_schema_models.dataverse_schema import DataverseSchemaResponse, MetadataBlock, MetadataField
 
 # (title, definition, usage, repeatable, example, is_top_level, is_last_row_of_field)
 Row = tuple[str, str, str, str, str, bool, bool]
@@ -30,20 +26,14 @@ class SchemaSpreadsheet:
         return ["Field", "Definition", "Usage", "Repeatable (Y/N)", "Example"]
 
     def _title_fmt(self, workbook: xlsxwriter.Workbook):
-        return workbook.add_format(
-            {
-                "bold": True,
-            }
-        )
+        return workbook.add_format({"bold": True})
 
     def _block_fmt(self, workbook: xlsxwriter.Workbook):
-        return workbook.add_format(
-            {
-                "bold": True,
-                "align": "center",
-                "bg_color": f"#{random.randrange(0x1000000):06x}",
-            }
-        )
+        return workbook.add_format({
+            "bold": True,
+            "align": "center",
+            "bg_color": f"#{random.randrange(0x1000000):06x}",
+        })
 
     @staticmethod
     def _field_rows(field: MetadataField) -> list[Row]:
@@ -98,12 +88,7 @@ class SchemaSpreadsheet:
         row_num = 1
         for block in blocks:
             sheet.merge_range(
-                row_num,
-                0,
-                row_num,
-                4,
-                f"{block.displayName} Block",
-                self._block_fmt(workbook),
+                row_num, 0, row_num, 4, f"{block.displayName} Block", self._block_fmt(workbook)
             )
             row_num += 1
             for field in sorted(block.fields.values(), key=lambda f: f.displayOrder):
@@ -118,14 +103,12 @@ class SchemaSpreadsheet:
         path = Path(path)
         workbook = xlsxwriter.Workbook(str(path))
         cell_fmts = {
-            (bold, end): workbook.add_format(
-                {
-                    "bold": bold,
-                    "bottom": 1 if end else 0,
-                    "text_wrap": True,
-                    "valign": "top",
-                }
-            )
+            (bold, end): workbook.add_format({
+                "bold": bold,
+                "bottom": 1 if end else 0,
+                "text_wrap": True,
+                "valign": "top",
+            })
             for bold in (True, False)
             for end in (True, False)
         }
@@ -133,10 +116,7 @@ class SchemaSpreadsheet:
         self._write_sheet(workbook, "All", blocks, cell_fmts)
         for block in blocks:
             self._write_sheet(
-                workbook,
-                block.displayName.removesuffix(" Metadata")[:31],
-                [block],
-                cell_fmts,
+                workbook, block.displayName.removesuffix(" Metadata")[:31], [block], cell_fmts
             )
         workbook.close()
         return path

@@ -19,7 +19,7 @@ from typing import Any
 
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field
 
-from .file_instance import FileInstance
+from dv_schema_models.file_instance import FileInstance
 
 
 class DatasetFieldValue(BaseModel):
@@ -30,12 +30,7 @@ class DatasetFieldValue(BaseModel):
     typeName: str
     multiple: bool
     typeClass: str  # 'primitive', 'compound', or 'controlledVocabulary'
-    value: (
-        str
-        | list[str]
-        | dict[str, DatasetFieldValue]
-        | list[dict[str, DatasetFieldValue]]
-    )
+    value: str | list[str] | dict[str, DatasetFieldValue] | list[dict[str, DatasetFieldValue]]
 
     def simple_value(self) -> Any:
         """Recursively strip away the typeName/multiple/typeClass wrapper, returning plain Python values.
@@ -45,10 +40,7 @@ class DatasetFieldValue(BaseModel):
         """
         if self.typeClass == "compound":
             if isinstance(self.value, list):
-                return [
-                    {k: v.simple_value() for k, v in item.items()}
-                    for item in self.value
-                ]
+                return [{k: v.simple_value() for k, v in item.items()} for item in self.value]
             if isinstance(self.value, dict):
                 return {k: v.simple_value() for k, v in self.value.items()}
         return self.value
@@ -84,7 +76,7 @@ class MetadataBlockInstance(BaseModel):
         return field.simple_value() if field else None
 
     def get_subfield_values(self, type_name: str, subfield: str) -> list[Any]:
-        """Collect one subfield from a compound field, e.g. get_subfield_values('author', 'authorName') -> ['Author1', 'Author2']."""  # noqa: D402
+        """Collect one subfield from a compound field, e.g. get_subfield_values('author', 'authorName') -> ['Author1', 'Author2']."""
         value = self.get_value(type_name)
         items = value if isinstance(value, list) else [value] if value else []
         return [item[subfield] for item in items if subfield in item]
@@ -154,10 +146,7 @@ class DatasetData(BaseModel):
     )  # backward compatibility: some datasets /older Dataverse versions don't have this field
 
     latestVersion: DatasetVersion = Field(
-        validation_alias=AliasChoices(
-            "datasetVersion",
-            "latestVersion",
-        ),
+        validation_alias=AliasChoices("datasetVersion", "latestVersion")
     )
 
     @property
@@ -187,7 +176,8 @@ class DatasetJson(BaseModel):
             block_name: The name of the metadata block (e.g. 'citation', 'geospatial').
             type_name: The typeName of the field within that block (e.g. 'title', 'author').
 
-        Returns:
+        Returns
+        -------
             str | list[str] | dict[str, Any] | list[dict[str, Any]] | None: The value of the specified field, or None if not found.
 
         """
@@ -199,7 +189,8 @@ class DatasetJson(BaseModel):
         Args:
             block_name: The name of the metadata block (e.g. 'citation', 'geospatial').
 
-        Returns:
+        Returns
+        -------
             list[str]: A list of typeNames for the fields present in the specified block.
 
         """

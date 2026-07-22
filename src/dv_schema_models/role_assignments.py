@@ -53,19 +53,14 @@ class RoleAssignments(BaseModel):
             return sum(1 for ra in self.data if hasattr(ra, field_name))
 
         return sum(
-            1
-            for ra in self.data
-            if hasattr(ra, field_name) and getattr(ra, field_name) == value
+            1 for ra in self.data if hasattr(ra, field_name) and getattr(ra, field_name) == value
         )
 
     def get_value(self, field_name: str) -> list[str | int | None]:
         """Get a list of all values for the given field name. Returns None for role assignments that don't have the field."""
         if not self.data:
             return []
-        return [
-            getattr(ra, field_name) if hasattr(ra, field_name) else None
-            for ra in self.data
-        ]
+        return [getattr(ra, field_name) if hasattr(ra, field_name) else None for ra in self.data]
 
 
 def load_role_assignments(metadata: dict) -> RoleAssignments:

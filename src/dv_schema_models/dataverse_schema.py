@@ -22,9 +22,7 @@ class MetadataField(BaseModel):
     Leaf fields (primitive or controlledVocabulary) have `childFields = None`.
     """
 
-    model_config = ConfigDict(
-        extra="ignore"
-    )  # tolerate any schema fields we did not model
+    model_config = ConfigDict(extra="ignore")  # tolerate any schema fields we did not model
 
     name: str
     displayName: str
@@ -86,9 +84,7 @@ class MetadataBlock(BaseModel):
 
     def required_fields(self) -> list[str]:
         """Return the names of all leaf fields marked isRequired = True."""
-        return [
-            name for name, field in self.all_leaf_fields().items() if field.isRequired
-        ]
+        return [name for name, field in self.all_leaf_fields().items() if field.isRequired]
 
 
 class DataverseSchemaResponse(BaseModel):

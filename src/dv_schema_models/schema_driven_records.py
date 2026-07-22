@@ -16,15 +16,12 @@ from typing import Any, Optional
 
 from pydantic import BaseModel, ConfigDict, Field, create_model
 
-from .dataset_instance import MetadataBlockInstance
-from .dataverse_schema import MetadataBlock, MetadataField
+from dv_schema_models.dataset_instance import MetadataBlockInstance
+from dv_schema_models.dataverse_schema import MetadataBlock, MetadataField
 
 # Maps a Dataverse field 'type' to a Python type. Anything not listed here (TEXT, TEXTBOX,
 # DATE, URL, EMAIL, and controlled-vocabulary text) is treated as a plain str.
-_PRIMITIVE_TYPE_MAP: dict[str, type] = {
-    "INT": int,
-    "FLOAT": float,
-}
+_PRIMITIVE_TYPE_MAP: dict[str, type] = {"INT": int, "FLOAT": float}
 
 
 def _python_type_for(field: MetadataField) -> type:
@@ -38,9 +35,7 @@ def _safe_identifier(name: str) -> str:
 
 
 def build_record_model(
-    source: MetadataBlock | MetadataField,
-    *,
-    model_name: str | None = None,
+    source: MetadataBlock | MetadataField, *, model_name: str | None = None
 ) -> type[BaseModel]:
     """Recursively build a Pydantic model matching a schema MetadataBlock (or a compound MetadataField).
 

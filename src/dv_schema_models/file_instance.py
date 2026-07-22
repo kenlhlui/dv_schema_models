@@ -6,7 +6,7 @@ from __future__ import annotations
 import logging
 from typing import Any
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict
 
 logger = logging.getLogger(__name__)
 
@@ -73,9 +73,7 @@ class FileInstance(BaseModel):
 
         Returns None (and logs a warning) if any present value isn't int/float.
         """
-        values = [
-            getattr(i.dataFile, field) for i in instances if i.dataFile is not None
-        ]
+        values = [getattr(i.dataFile, field) for i in instances if i.dataFile is not None]
         for v in values:
             if v is not None and not isinstance(v, (int, float)):
                 logger.warning("sum_field: field %r has non-numeric value %r", field, v)
