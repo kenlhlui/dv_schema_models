@@ -1,0 +1,49 @@
+[project]
+site_name = "dv_schema_models"
+site_description = "Turns Harvard Dataverse Project metadatablocks schema and dataset JSON into Pydantic models."
+site_author = "Ken Lui"
+site_url = "https://kenlhlui.github.io/dv_schema_models"
+repo_url = "https://github.com/kenlhlui/dv_schema_models"
+repo_name = "kenlhlui/dv_schema_models"
+copyright = "&copy; 2026 Ken Lui"
+watch = ["src"]
+nav = [
+  { Home = "index.md" },
+  { Reference = "reference.md" },
+]
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle.icon = "lucide/sun-moon"
+toggle.name = "Switch to light mode"
+
+# Palette toggle for light mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+# Palette toggle for dark mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to system preference"
+
+[project.markdown_extensions.pymdownx.highlight]
+[project.markdown_extensions.pymdownx.superfences]
+
+[project.theme]
+features = [
+    "search.highlight"
+]
+[project.plugins.mkdocstrings.handlers.python]
+inventories = ["https://docs.python.org/3/objects.inv"]
+paths = ["src/dv_schema_models"]
+
+[project.plugins.mkdocstrings.handlers.python.options]
+docstring_style = "numpy"
+inherited_members = true
+show_source = true
+show_submodules = true

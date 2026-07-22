@@ -36,16 +36,17 @@ jobs:
       - name: Build changelog for Release
         env:
           NEW_VERSION: ${{ steps.get-version.outputs.new_version }}
-        # The following command might not be the best way to get the latest changelog. 
+        # The following command might not be the best way to get the latest changelog.
         run: |
           awk '/^## /{c++} c==1' CHANGELOG.md > .changelog.md
       - name: GitHub Release
-        if: steps.get-version.outputs.new_version != ''
+        if: ${{ steps.get-version.outputs.new_version != '' }}
         env:
           GH_TOKEN: ${{ github.token }}
           NEW_VERSION_TAG: ${{ steps.get-version.outputs.new_version_tag }}
         run: |
           gh release create "${NEW_VERSION_TAG}" --notes-file .changelog.md
+
   pypi_publish:
     runs-on: ubuntu-latest
     needs: bump

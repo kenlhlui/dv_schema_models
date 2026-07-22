@@ -1,0 +1,17 @@
+_commit: v2.4.2
+_src_path: gh:kenlhlui/substrate
+data_project_dirs: false
+docs_with_reference: true
+project_description: Turns Harvard Dataverse Project metadatablocks schema and dataset
+    JSON into Pydantic models.
+project_name: dv_schema_models
+project_type: package
+project_url: https://github.com/kenlhlui/dv_schema_models
+python_version: '3.10'
+typing: optional
+version_scheme: pep440
+with_conventional_commits: true
+with_httpx2: false
+with_pydantic: true
+with_pypi_publish: true
+with_typer_cli: false
