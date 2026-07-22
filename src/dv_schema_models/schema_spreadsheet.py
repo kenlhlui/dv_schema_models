@@ -99,7 +99,19 @@ class SchemaSpreadsheet:
                     row_num += 1
 
     def write(self, path: str | Path) -> Path:
-        """Write an 'All' worksheet plus one per metadata block to an .xlsx file at `path`."""
+        """Write an 'All' worksheet plus one per metadata block to an .xlsx file at `path`.
+
+        Parameters
+        ----------
+        path
+            The path to the .xlsx file to write. If it exists, it will be overwritten
+
+        Returns
+        -------
+        Path
+            The path to the .xlsx file that was written.
+
+        """
         path = Path(path)
         workbook = xlsxwriter.Workbook(str(path))
         cell_fmts = {

@@ -1,4 +1,4 @@
-"""Pydantic models for a Dataverse dataset export ('GET /api/datasets/:id' response).
+"""Pydantic models for a Dataverse dataset export (`GET /api/datasets/:id` response).
 
 This is the companion to dataverse_schema.py: that file models the *schema*
 (what fields CAN exist and their rules), this file models actual *metadata
@@ -46,6 +46,7 @@ class DatasetFieldValue(BaseModel):
         return self.value
 
     def get_fields(self) -> list[DatasetFieldValue]:
+        """Return a flat list of all DatasetFieldValue objects nested inside this one.""""
         return [self.typeName for f in self.value]
 
 
@@ -119,12 +120,37 @@ class DatasetVersion(BaseModel):
         return block.get_value(type_name) if block else None
 
     def field_names(self, block_name: str) -> list[str]:
-        """Get the typeNames of every field present in the given block (e.g. 'citation')."""
+        """Get the typeNames of every field present in the given block (e.g. 'citation').
+
+        Parameters
+        ----------
+        block_name
+            The name of the metadata block (e.g. 'citation', 'geospatial').
+
+        Returns
+        -------
+        list[str]
+            A list of typeNames for the fields present in the specified block.
+
+        """
         block = self.metadataBlocks.get(block_name)
         return block.field_names() if block else []
 
     def get_raw(self, key: str) -> object | None:
-        """Get a raw top-level field not covered by the schema (requires extra='allow')."""
+        """Get a raw top-level field not covered by the schema.
+
+        Parameters
+        ----------
+        key
+            The name of the top-level field to retrieve.
+
+        Returns
+        -------
+        object | None
+            The value of the specified field, or None if not found.
+
+
+        """
         return self.model_extra.get(key) if self.model_extra else None
 
 
@@ -155,7 +181,19 @@ class DatasetData(BaseModel):
         return self.latestVersion
 
     def get_raw(self, key: str) -> object | None:
-        """Get a raw top-level field not covered by the schema (requires extra='allow')."""
+        """Get a raw top-level field not covered by the schema
+
+        Parameters
+        ----------
+        key
+            The name of the top-level field to retrieve.
+
+        Returns
+        -------
+        object | None
+            The value of the specified field, or None if not found.
+
+        """
         return self.model_extra.get(key) if self.model_extra else None
 
 
@@ -172,7 +210,8 @@ class DatasetJson(BaseModel):
     ) -> str | list[str] | dict[str, Any] | list[dict[str, Any]] | None:
         """Get the value of a field by its block and type names.
 
-        Args:
+        Parameters
+        ----------
             block_name: The name of the metadata block (e.g. 'citation', 'geospatial').
             type_name: The typeName of the field within that block (e.g. 'title', 'author').
 
@@ -186,7 +225,8 @@ class DatasetJson(BaseModel):
     def field_names(self, block_name: str) -> list[str]:
         """Check what fields are present in a given block.
 
-        Args:
+        Parameters
+        ----------
             block_name: The name of the metadata block (e.g. 'citation', 'geospatial').
 
         Returns

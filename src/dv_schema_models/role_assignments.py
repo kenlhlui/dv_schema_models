@@ -38,14 +38,17 @@ class RoleAssignments(BaseModel):
 
         Parameters
         ----------
-        field_name: The name of the field to count.
-        value: The value to look for and count. If None, counts all occurrences of the field regardless of value.
+        field_name
+            The name of the field to count.
+        value
+            The value to look for and count. If None, counts all occurrences of the field regardless of value.
 
         Returns
         -------
-        int: The number of occurrences of the field with the specified value.
+        int
+            The number of occurrences of the field with the specified value.
 
-        """
+        """  # noqa: W505
         if not self.data:
             return 0
 
@@ -57,7 +60,19 @@ class RoleAssignments(BaseModel):
         )
 
     def get_value(self, field_name: str) -> list[str | int | None]:
-        """Get a list of all values for the given field name. Returns None for role assignments that don't have the field."""
+        """Get a list of all values for the given field name. Returns None for role assignments that don't have the field.
+
+        Parameters
+        ----------
+        field_name
+            The name of the field to retrieve values for.
+
+        Returns
+        -------
+        list[str | int | None]
+            A list of values for the specified field, or None for role assignments that don't have the field.
+
+        """  # noqa: W505
         if not self.data:
             return []
         return [getattr(ra, field_name) if hasattr(ra, field_name) else None for ra in self.data]

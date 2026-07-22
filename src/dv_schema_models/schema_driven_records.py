@@ -25,7 +25,17 @@ _PRIMITIVE_TYPE_MAP: dict[str, type] = {"INT": int, "FLOAT": float}
 
 
 def _python_type_for(field: MetadataField) -> type:
-    """Map a leaf schema field's declared 'type' to a Python type."""
+    """Map a leaf schema field's declared 'type' to a Python type.
+
+    Parameters
+    ----------
+    field: The schema MetadataField to map.
+
+    Returns
+    -------
+    type: The Python type corresponding to the Dataverse field's 'type'.
+
+    """
     return _PRIMITIVE_TYPE_MAP.get(field.type, str)
 
 
