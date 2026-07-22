@@ -59,7 +59,7 @@ field.iter_leaf_fields()                    # [keywordValue, keywordVocabulary, 
 
 ```python
 import json
-from dv_schema_models.dataset_instance import load_dataset
+from dv_schema_models.dataset_instance import IsPartOf, load_dataset
 
 dataset = load_dataset(json.load(open("ds_metadata.json")))
 
@@ -78,6 +78,9 @@ block.get_field("author").simple_value()    # [{'authorName': 'Author1', 'author
 
 # Pull one subfield out of a compound field
 block.get_subfield_values("author", "authorName")  # ['Author1', 'Author2']
+
+# Walk the isPartOf chain (dataset -> collection -> parent collection -> ...), possibly None
+IsPartOf.get_field_list(dataset.data.isPartOf, "identifier")  # ['sub-collection', 'top-collection']
 ```
 
 ### 3. Work with files
