@@ -15,7 +15,7 @@ depending on typeClass/multiple:
 
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, Literal
 
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field
 
@@ -259,7 +259,7 @@ class DatasetJson(BaseModel):
 
     model_config = ConfigDict(extra="ignore")
 
-    status: str
+    status: Literal["OK", "ERROR"]
     data: DatasetData
 
     def get_value(
@@ -316,7 +316,7 @@ def load_dataset(metadata: dict) -> DatasetJson:
     return DatasetJson(status="OK", data=DatasetData.model_validate(metadata))
 
 
-def safe_load_dataset(metadata: dict) -> DatasetJson | str:
+def safe_load_dataset(metadata: dict) -> DatasetJson | str | None:
     """Like `load_dataset`, but return the API's error message instead of raising when status is "ERROR".
 
     Parameters
@@ -326,10 +326,10 @@ def safe_load_dataset(metadata: dict) -> DatasetJson | str:
 
     Returns
     -------
-    DatasetJson | str
-        The parsed dataset, or an error message if the status is "ERROR".
+    DatasetJson | str | None
+        The parsed dataset, or the API's error message (if any) if the status is "ERROR".
 
     """  # ruff:ignore[doc-line-too-long]
-    if metadata.get("status") == "ERROR":
-        return metadata.get("message", "Unknown error")
-    return load_dataset(metadata)
+    if metadata.get("status") == "OK":
+        return load_dataset(metadata)
+    return metadata.get("message")

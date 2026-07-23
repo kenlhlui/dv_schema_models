@@ -29,18 +29,16 @@ class SchemaSpreadsheet:
         return workbook.add_format({"bold": True})
 
     def _block_fmt(self, workbook: xlsxwriter.Workbook):
-        return workbook.add_format({
-            "bold": True,
-            "align": "center",
-            "bg_color": f"#{random.randrange(0x1000000):06x}",
-        })
+        return workbook.add_format(
+            {"bold": True, "align": "center", "bg_color": f"#{random.randrange(0x1000000):06x}"}
+        )
 
     @staticmethod
     def _field_rows(field: MetadataField) -> list[Row]:
         """Turn one top-level field (and its children) into spreadsheet rows."""
         # ponytail: usage is RQ/O from isRequired; the schema has no "recommended" flag
-        usage = lambda f: "RQ" if f.isRequired else "O"  # noqa: E731
-        repeatable = lambda f: "Y" if f.multiple else "N"  # noqa: E731
+        usage = lambda f: "RQ" if f.isRequired else "O"  # ruff:ignore[lambda-assignment]
+        repeatable = lambda f: "Y" if f.multiple else "N"  # ruff:ignore[lambda-assignment]
 
         if not field.childFields:
             return [
@@ -115,12 +113,9 @@ class SchemaSpreadsheet:
         path = Path(path)
         workbook = xlsxwriter.Workbook(str(path))
         cell_fmts = {
-            (bold, end): workbook.add_format({
-                "bold": bold,
-                "bottom": 1 if end else 0,
-                "text_wrap": True,
-                "valign": "top",
-            })
+            (bold, end): workbook.add_format(
+                {"bold": bold, "bottom": 1 if end else 0, "text_wrap": True, "valign": "top"}
+            )
             for bold in (True, False)
             for end in (True, False)
         }
