@@ -20,3 +20,9 @@ def test_load_dataset_error() -> None:
     metadata = json.loads((FIXTURES / "ds_metadata_error.json").read_text())
     result = safe_load_dataset(metadata)
     assert result == metadata["message"]
+
+
+def test_load_dataset_error_no_message() -> None:
+    """A `{status: ERROR}` payload with no message returns None instead of a synthesized string."""
+    result = safe_load_dataset({"status": "ERROR"})
+    assert result is None
